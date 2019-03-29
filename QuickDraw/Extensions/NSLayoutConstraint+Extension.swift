@@ -16,10 +16,10 @@ extension NSView {
         translatesAutoresizingMaskIntoConstraints = false
 
         return [
-            superview.topAnchor.constraint(equalTo: topAnchor, constant: insets.top),
-            superview.leftAnchor.constraint(equalTo: leftAnchor, constant: insets.left),
-            superview.rightAnchor.constraint(equalTo: rightAnchor, constant: -insets.right),
-            superview.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -insets.bottom),
+            topAnchor.constraint(equalTo: superview.topAnchor, constant: insets.top),
+            leftAnchor.constraint(equalTo: superview.leftAnchor, constant: insets.left),
+            rightAnchor.constraint(equalTo: superview.rightAnchor, constant: -insets.right),
+            bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: -insets.bottom),
         ]
     }
 }

@@ -15,26 +15,24 @@ class RadioButton<Item>: NSButton {
     }
 
     let representedItem: Item
-    let debugName: String
 
     var radioState: State = .normal {
         didSet { reloadStyle() }
     }
 
-    init(item: Item, debugName: String) {
+    init(item: Item, title: String = "") {
         self.representedItem = item
-        self.debugName = debugName
         super.init(frame: .zero)
+        self.attributedTitle = Text(title).font(.boldButton).color(.black).attributedString
         isBordered = false
-        stringValue = " "
         setup()
         reloadStyle()
     }
 
     required init?(coder: NSCoder) { die() }
 
-    private func reloadStyle() {
-        Log(debugName, radioState, highlighted: radioState != .normal)
+    func reloadStyle() {
+        Log(self, radioState, highlighted: radioState != .normal)
 
         switch radioState {
         case .normal: styleNormal()

@@ -8,18 +8,18 @@
 
 import Cocoa
 
-class RadioButtonGroup<Item>: NSView {
+class RadioButtonGroup<Item, Button>: NSView where Button: RadioButton<Item> {
 
     let selectedItem: Watchable<Item>
 
     private let stack: NSStackView = create {
         $0.orientation = .horizontal
-        $0.spacing = 10
+        $0.spacing = 15
     }
 
-    private let buttons: [RadioButton<Item>]
+    let buttons: [Button]
 
-    init(options: [RadioButton<Item>]) {
+    init(options: [Button]) {
         guard !options.isEmpty else { die() }
 
         self.buttons = options
@@ -59,7 +59,7 @@ class RadioButtonGroup<Item>: NSView {
     }
 
     @objc private func pressed(button: NSControl) {
-        let button = button as! RadioButton<Item> // Cannot be used in argument due to @objc
+        let button = button as! Button // Cannot be used in argument due to @objc
 
         buttons.forEach({
             if $0 == button {

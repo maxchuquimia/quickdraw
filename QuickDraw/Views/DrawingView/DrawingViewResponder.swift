@@ -11,40 +11,42 @@ import Cocoa
 class DrawingViewResponder {
 
     enum Shape {
-        case arrow, rect, circle
+        case arrow, line, rect, circle
     }
 
     let drawings: Watchable<[Renderable]> = .init([])
-//    let colors: Watchable<[PaletteColourView]> = .init([])
     let colorKeyboardKeyHandler: Handler<Int> = .init()
+    let shapeKeyboardKeyHandler: Handler<Int> = .init()
+    let isTracking: Watchable<Bool> = .init(false)
     var selectedColor: NSColor = .white
-    let selectedShape: Watchable<Shape> = .init(.arrow)
+    var selectedShape: Shape = .arrow
     var undoManager: UndoManager
 
-    private var isTracking = false
+//    private var isTracking = false
 
     init(undoManager: UndoManager = .init()) {
         self.undoManager = undoManager
     }
 
     func mouseDown(with event: NSEvent, in view: NSView) {
-        isTracking = true
+        isTracking.value = true
         let location = view.convert(event.locationInWindow, from: nil)
 
         createNewPath(startingAt: location)
     }
 
     func mouseDragged(with event: NSEvent, in view: NSView) {
-        guard isTracking else { return }
-        let location = view.convert(event.locationInWindow, from: nil)
+        Log("isTracking", isTracking.value)
 
+        guard isTracking.value else { return }
+        let location = view.convert(event.locationInWindow, from: nil)
         // Add a waypoint to the new path
         drawings.value.last?.mouseMoved(to: location)
         drawings.update()
     }
 
     func mouseUp(with event: NSEvent) {
-        isTracking = false
+        isTracking.value = false
     }
 
     func keyDown(with event: NSEvent) {
@@ -56,6 +58,10 @@ class DrawingViewResponder {
         case KeyCodes.color3: colorPressed(2)
         case KeyCodes.color4: colorPressed(3)
         case KeyCodes.color5: colorPressed(4)
+        case KeyCodes.charL: shapePressed(0)
+        case KeyCodes.charA: shapePressed(1)
+        case KeyCodes.charR: shapePressed(2)
+        case KeyCodes.charC: shapePressed(3)
         case KeyCodes.escape: escapePressed()
         default: break
         }
@@ -71,6 +77,10 @@ private extension DrawingViewResponder {
 
     func colorPressed(_ index: Int) {
         colorKeyboardKeyHandler.send(index)
+    }
+
+    func shapePressed(_ index: Int) {
+        shapeKeyboardKeyHandler.send(index)
     }
 
     func escapePressed() {
@@ -89,7 +99,11 @@ private extension DrawingViewResponder {
 
         let shape: Renderable
 
-        switch selectedShape.value {
+        switch selectedShape {
+        case .line:
+            shape = RenderableLine(origin: point, isArrow: false)
+            shape.fillColor = selectedColor
+            shape.strokeColor = selectedColor
         case .arrow:
             shape = RenderableLine(origin: point, isArrow: true)
             shape.fillColor = selectedColor

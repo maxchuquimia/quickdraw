@@ -17,6 +17,7 @@
 		556CE775223613B800EE15CE /* Rect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556CE774223613B800EE15CE /* Rect.swift */; };
 		5578F39E2249853D00DACBB3 /* NSTrackingArea+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5578F39D2249853D00DACBB3 /* NSTrackingArea+Extension.swift */; };
 		5578F3A022498D4200DACBB3 /* Numbers+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5578F39F22498D4200DACBB3 /* Numbers+Extension.swift */; };
+		5584963B224DD2F300387F02 /* InteractionDisabledView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5584963A224DD2F300387F02 /* InteractionDisabledView.swift */; };
 		55A840B822489E50009093B8 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A840B722489E50009093B8 /* RadioButton.swift */; };
 		55B94ED42237564000024616 /* Copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B94ED32237564000024616 /* Copy.swift */; };
 		55B94ED62237573200024616 /* Copy.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55B94ED52237573200024616 /* Copy.strings */; };
@@ -37,8 +38,13 @@
 		55E78608222DF9A200A91D79 /* DrawingViewResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E78607222DF9A200A91D79 /* DrawingViewResponder.swift */; };
 		55E7860B222DFBEF00A91D79 /* Renderable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E7860A222DFBEF00A91D79 /* Renderable.swift */; };
 		55E7860D222E239F00A91D79 /* KeyCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E7860C222E239F00A91D79 /* KeyCodes.swift */; };
-		55E7860F222E407400A91D79 /* PaletteColourView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E7860E222E407400A91D79 /* PaletteColourView.swift */; };
+		55E7860F222E407400A91D79 /* ColorRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E7860E222E407400A91D79 /* ColorRadioButton.swift */; };
 		55E78611222E4B9900A91D79 /* RenderableLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E78610222E4B9900A91D79 /* RenderableLine.swift */; };
+		55F110E4224C88FF00D03388 /* ShapeRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F110E3224C88FF00D03388 /* ShapeRadioButton.swift */; };
+		55F110E6224C899400D03388 /* BaseRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F110E5224C899400D03388 /* BaseRadioButton.swift */; };
+		55F110E9224C8C2A00D03388 /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F110E8224C8C2A00D03388 /* Text.swift */; };
+		55F110EB224C8F4700D03388 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F110EA224C8F4700D03388 /* Fonts.swift */; };
+		55F110ED224C918300D03388 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F110EC224C918300D03388 /* Image.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +58,7 @@
 		556CE774223613B800EE15CE /* Rect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rect.swift; sourceTree = "<group>"; };
 		5578F39D2249853D00DACBB3 /* NSTrackingArea+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTrackingArea+Extension.swift"; sourceTree = "<group>"; };
 		5578F39F22498D4200DACBB3 /* Numbers+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Numbers+Extension.swift"; sourceTree = "<group>"; };
+		5584963A224DD2F300387F02 /* InteractionDisabledView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionDisabledView.swift; sourceTree = "<group>"; };
 		55A840B722489E50009093B8 /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
 		55B94ED32237564000024616 /* Copy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Copy.swift; sourceTree = "<group>"; };
 		55B94ED52237573200024616 /* Copy.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Copy.strings; sourceTree = "<group>"; };
@@ -75,8 +82,13 @@
 		55E78607222DF9A200A91D79 /* DrawingViewResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingViewResponder.swift; sourceTree = "<group>"; };
 		55E7860A222DFBEF00A91D79 /* Renderable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderable.swift; sourceTree = "<group>"; };
 		55E7860C222E239F00A91D79 /* KeyCodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyCodes.swift; sourceTree = "<group>"; };
-		55E7860E222E407400A91D79 /* PaletteColourView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteColourView.swift; sourceTree = "<group>"; };
+		55E7860E222E407400A91D79 /* ColorRadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorRadioButton.swift; sourceTree = "<group>"; };
 		55E78610222E4B9900A91D79 /* RenderableLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderableLine.swift; sourceTree = "<group>"; };
+		55F110E3224C88FF00D03388 /* ShapeRadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeRadioButton.swift; sourceTree = "<group>"; };
+		55F110E5224C899400D03388 /* BaseRadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRadioButton.swift; sourceTree = "<group>"; };
+		55F110E8224C8C2A00D03388 /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
+		55F110EA224C8F4700D03388 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		55F110EC224C918300D03388 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +107,7 @@
 			children = (
 				55B94ED22237563100024616 /* Copy */,
 				55E785E9222DE90F00A91D79 /* Assets.xcassets */,
+				55F110EC224C918300D03388 /* Image.swift */,
 				55E785EB222DE90F00A91D79 /* Main.storyboard */,
 				55E785EE222DE90F00A91D79 /* Info.plist */,
 			);
@@ -135,7 +148,9 @@
 		550F87D52239DE8C00E66E79 /* Controls */ = {
 			isa = PBXGroup;
 			children = (
-				55E7860E222E407400A91D79 /* PaletteColourView.swift */,
+				55F110E5224C899400D03388 /* BaseRadioButton.swift */,
+				55E7860E222E407400A91D79 /* ColorRadioButton.swift */,
+				55F110E3224C88FF00D03388 /* ShapeRadioButton.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -153,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				55A840B922489F95009093B8 /* RadioButton */,
+				5584963A224DD2F300387F02 /* InteractionDisabledView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -197,6 +213,7 @@
 				55E785F7222DF92600A91D79 /* Depdendencies */,
 				55E785E5222DE90D00A91D79 /* AppDelegate.swift */,
 				55E785E7222DE90D00A91D79 /* ViewController.swift */,
+				55F110E7224C8C1D00D03388 /* Text */,
 				5501899F2234E2DC000E4EC1 /* Extensions */,
 				5501899E2234E216000E4EC1 /* Constants */,
 				5501899B2234E059000E4EC1 /* Math */,
@@ -241,6 +258,15 @@
 				55B94ED722376E0800024616 /* RenderableCircle.swift */,
 			);
 			path = Renderables;
+			sourceTree = "<group>";
+		};
+		55F110E7224C8C1D00D03388 /* Text */ = {
+			isa = PBXGroup;
+			children = (
+				55F110E8224C8C2A00D03388 /* Text.swift */,
+				55F110EA224C8F4700D03388 /* Fonts.swift */,
+			);
+			path = Text;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -315,14 +341,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				55E78611222E4B9900A91D79 /* RenderableLine.swift in Sources */,
+				55F110E6224C899400D03388 /* BaseRadioButton.swift in Sources */,
 				550F87DB223A1B3900E66E79 /* NSLayoutConstraint+Extension.swift in Sources */,
-				55E7860F222E407400A91D79 /* PaletteColourView.swift in Sources */,
+				55F110ED224C918300D03388 /* Image.swift in Sources */,
+				55E7860F222E407400A91D79 /* ColorRadioButton.swift in Sources */,
 				55E78601222DF98600A91D79 /* General.swift in Sources */,
 				556CE775223613B800EE15CE /* Rect.swift in Sources */,
 				55E785FF222DF98600A91D79 /* Synchronicity.swift in Sources */,
 				55E78600222DF98600A91D79 /* Watchable.swift in Sources */,
 				55E7860B222DFBEF00A91D79 /* Renderable.swift in Sources */,
 				55B94EDA223772CE00024616 /* Math.swift in Sources */,
+				55F110E9224C8C2A00D03388 /* Text.swift in Sources */,
 				550F87D22238660900E66E79 /* Point.swift in Sources */,
 				55E785F6222DF20400A91D79 /* DrawingView.swift in Sources */,
 				55E785E8222DE90D00A91D79 /* ViewController.swift in Sources */,
@@ -331,7 +360,9 @@
 				5501899D2234E062000E4EC1 /* Circle.swift in Sources */,
 				55E78603222DF98600A91D79 /* Watcher.swift in Sources */,
 				55A840B822489E50009093B8 /* RadioButton.swift in Sources */,
+				55F110EB224C8F4700D03388 /* Fonts.swift in Sources */,
 				55E78608222DF9A200A91D79 /* DrawingViewResponder.swift in Sources */,
+				5584963B224DD2F300387F02 /* InteractionDisabledView.swift in Sources */,
 				55E7860D222E239F00A91D79 /* KeyCodes.swift in Sources */,
 				55B94ED822376E0800024616 /* RenderableCircle.swift in Sources */,
 				55B94ED42237564000024616 /* Copy.swift in Sources */,
@@ -343,6 +374,7 @@
 				550F87D9223A0AB300E66E79 /* RadioButtonGroup.swift in Sources */,
 				5578F39E2249853D00DACBB3 /* NSTrackingArea+Extension.swift in Sources */,
 				55E785E6222DE90D00A91D79 /* AppDelegate.swift in Sources */,
+				55F110E4224C88FF00D03388 /* ShapeRadioButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

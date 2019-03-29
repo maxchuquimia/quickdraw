@@ -11,14 +11,20 @@ import Cocoa
 class DrawingView: NSView, Watcher {
 
     private let model = DrawingViewResponder()
-    private let colorsStack = RadioButtonGroup(options: [
-        PaletteColourView(item: #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1), debugName: "Red"),
-        PaletteColourView(item: #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1), debugName: "Yellow"),
-        PaletteColourView(item: #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1), debugName: "Green"),
-        PaletteColourView(item: #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1), debugName: "Blue"),
-        PaletteColourView(item: #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1), debugName: "Purple"),
+    private let colorsRadioGroup = RadioButtonGroup(options: [
+        ColorRadioButton(item: #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1), title: "1"),
+        ColorRadioButton(item: #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1), title: "2"),
+        ColorRadioButton(item: #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1), title: "3"),
+        ColorRadioButton(item: #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1), title: "4"),
+        ColorRadioButton(item: #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1), title: "5"),
     ])
-    private let brush: NSView = create {
+    private let shapesRadioGroup = RadioButtonGroup<DrawingViewResponder.Shape, ShapeRadioButton>(options: [
+        ShapeRadioButton(item: .line),
+        ShapeRadioButton(item: .arrow),
+        ShapeRadioButton(item: .rect),
+        ShapeRadioButton(item: .circle),
+    ])
+    private let brush: InteractionDisabledView = create {
         $0.setFrameSize(NSSize(width: 6, height: 6))
         $0.wantsLayer = true
         $0.layer?.cornerRadius = $0.frame.size.height / 2.0
@@ -36,7 +42,10 @@ class DrawingView: NSView, Watcher {
         wantsLayer = true
         model.drawings += weak(Function.redraw(renderables:))
         model.colorKeyboardKeyHandler += weak(Function.keyboard(selectedColor:))
-        colorsStack.selectedItem += weak(Function.update(selectedColor:))
+        model.shapeKeyboardKeyHandler += weak(Function.keyboard(selectedShape:))
+        model.isTracking += weak(Function.model(isTracking:))
+        colorsRadioGroup.selectedItem += weak(Function.update(selectedColor:))
+        shapesRadioGroup.selectedItem += weak(Function.update(selectedShape:))
         createLayout()
 
         becomeFirstResponder()
@@ -54,12 +63,18 @@ class DrawingView: NSView, Watcher {
     private func createLayout() {
         addSubview(brush)
 
-        colorsStack.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(colorsStack)
+        colorsRadioGroup.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(colorsRadioGroup)
+
+        shapesRadioGroup.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(shapesRadioGroup)
 
         NSLayoutConstraint.activate(
-            colorsStack.leftAnchor.constraint(equalTo: leftAnchor, constant: 30),
-            colorsStack.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -30)
+            colorsRadioGroup.leftAnchor.constraint(equalTo: leftAnchor, constant: 30),
+            colorsRadioGroup.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -30),
+
+            shapesRadioGroup.leftAnchor.constraint(equalTo: colorsRadioGroup.rightAnchor, constant: 50),
+            shapesRadioGroup.bottomAnchor.constraint(equalTo: colorsRadioGroup.bottomAnchor)
         )
     }
 
@@ -76,13 +91,12 @@ class DrawingView: NSView, Watcher {
     override func mouseDragged(with event: NSEvent) {
         super.mouseDragged(with: event)
         model.mouseDragged(with: event, in: self)
+        updateBrush(for: event)
     }
 
     override func mouseMoved(with event: NSEvent) {
         super.mouseMoved(with: event)
-
-        let location = event.locationInWindow.offset(x: -brush.frame.width / 2, y: -brush.frame.width / 2)
-        brush.setFrameOrigin(location)
+        updateBrush(for: event)
     }
 
     override func mouseUp(with event: NSEvent) {
@@ -101,17 +115,43 @@ class DrawingView: NSView, Watcher {
     }
 }
 
+// MARK: - Bindings
 extension DrawingView {
 
     func redraw(renderables: [Renderable]) {
         needsDisplay = true
     }
 
+    func model(isTracking: Bool) {
+        brush.isHidden = isTracking
+        Log("Updated Brush", brush.isHidden)
+        needsDisplay = true
+    }
+
     func keyboard(selectedColor index: Int) {
-        colorsStack.select(item: index)
+        colorsRadioGroup.select(item: index)
+    }
+
+    func keyboard(selectedShape index: Int) {
+        shapesRadioGroup.select(item: index)
     }
 
     func update(selectedColor: NSColor) {
         model.selectedColor = selectedColor
+        brush.layer?.backgroundColor = selectedColor.cgColor
+        shapesRadioGroup.buttons.forEach({ $0.tintColor = selectedColor })
+    }
+
+    func update(selectedShape: DrawingViewResponder.Shape) {
+        model.selectedShape = selectedShape
+    }
+}
+
+// MARK: - Private
+private extension DrawingView {
+
+    func updateBrush(for event: NSEvent) {
+        let location = event.locationInWindow.offset(x: -brush.frame.width / 2, y: -brush.frame.width / 2)
+        brush.setFrameOrigin(location)
     }
 }

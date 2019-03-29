@@ -1,23 +1,22 @@
 //
-//  RoundedLabel.swift
+//  BaseRadioButton.swift
 //  QuickDraw
 //
-//  Created by Max Chuquimia on 5/3/19.
+//  Created by Max Chuquimia on 28/3/19.
 //  Copyright © 2019 Max Chuquimia. All rights reserved.
 //
 
 import Cocoa
 
-class PaletteColourView: RadioButton<NSColor> {
+private enum Metrics {
+    static let side = 35.f // Static isn't allowed inside generic classes
+}
 
-    private enum Metrics {
-        static let side = 25.f
-    }
+class BaseRadioButton<Item>: RadioButton<Item> {
 
     override func setup() {
         wantsLayer = true
-        layer?.backgroundColor = representedItem.cgColor
-        layer?.borderColor = NSColor.white.cgColor
+        layer?.borderWidth = 3
 
         NSLayoutConstraint.activate(
             widthAnchor.constraint(equalToConstant: Metrics.side),
@@ -31,17 +30,17 @@ class PaletteColourView: RadioButton<NSColor> {
     }
 
     override func styleNormal() {
-        layer?.backgroundColor = representedItem.withAlphaComponent(0.5).cgColor
         needsDisplay = true
+        alphaValue = 1.0
     }
 
     override func styleHover() {
-        layer?.backgroundColor = representedItem.withAlphaComponent(0.2).cgColor
         needsDisplay = true
+        alphaValue = 0.5
     }
 
     override func styleSelected() {
-        layer?.backgroundColor = representedItem.cgColor
         needsDisplay = true
+        alphaValue = 1.0
     }
 }
