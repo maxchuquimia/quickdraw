@@ -15,7 +15,7 @@ class RenderableRect: Renderable {
     let origin: CGPoint
 
     override var actionName: String {
-        return "Rectangle"
+        return Copy("renderable.type.rectangle")
     }
 
     required init(origin: CGPoint) {

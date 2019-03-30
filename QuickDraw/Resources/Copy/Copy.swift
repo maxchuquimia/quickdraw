@@ -13,5 +13,6 @@ func Copy(_ key: String) -> String {
 }
 
 func Copy(_ key: String, _ value: String) -> String {
-    return NSLocalizedString(key, tableName: "Copy", bundle: Bundle.main, value: value, comment: key)
+    let format = NSLocalizedString(key, tableName: "Copy", bundle: Bundle.main, comment: key)
+    return String(format: format, value)
 }

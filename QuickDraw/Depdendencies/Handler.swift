@@ -46,3 +46,9 @@ class Handler<T> {
         self.watchers.forEach({ $0.val(value) })
     }
 }
+
+extension Handler where T == Void {
+    func send() {
+        send(())
+    }
+}

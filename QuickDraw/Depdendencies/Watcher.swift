@@ -24,6 +24,14 @@ extension Watcher where Self: AnyObject {
             method(self)(t)
         })
     }
+
+    func weak(_ method: @escaping ((Function) -> (() -> Void))) -> (AnyObject?, (() -> Void)) {
+
+        return (deallocator, { [weak self] in
+            guard let `self` = self else { return }
+            method(self)()
+        })
+    }
 }
 
 infix operator +=: AssignmentPrecedence
@@ -38,6 +46,12 @@ infix operator +=: AssignmentPrecedence
 /// may result in three `c` notifications being receieved by a `Watcher`
 func +=<T>(handler: Handler<T>, value: (AnyObject?, ((T) -> Void))) {
     handler.value(value)
+}
+
+func +=(handler: Handler<Void>, value: (AnyObject?, (() -> Void))) {
+    handler.value(value.0, valueHandler: {_ in
+        value.1()
+    })
 }
 
 private extension Handler {

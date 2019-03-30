@@ -11,7 +11,7 @@ import Cocoa
 class ShapeRadioButton: BaseRadioButton<DrawingViewResponder.Shape> {
 
     enum Metrics {
-        static let imageInset = NSEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+        static let imageInset = NSEdgeInsets.allEdges(8)
     }
 
     var tintColor: NSColor = .white {

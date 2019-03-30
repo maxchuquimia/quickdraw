@@ -17,12 +17,11 @@ class DrawingViewResponder {
     let drawings: Watchable<[Renderable]> = .init([])
     let colorKeyboardKeyHandler: Handler<Int> = .init()
     let shapeKeyboardKeyHandler: Handler<Int> = .init()
+    let slashKeyboardKeyHandler: Handler<Void> = .init()
     let isTracking: Watchable<Bool> = .init(false)
     var selectedColor: NSColor = .white
     var selectedShape: Shape = .arrow
     var undoManager: UndoManager
-
-//    private var isTracking = false
 
     init(undoManager: UndoManager = .init()) {
         self.undoManager = undoManager
@@ -36,8 +35,6 @@ class DrawingViewResponder {
     }
 
     func mouseDragged(with event: NSEvent, in view: NSView) {
-        Log("isTracking", isTracking.value)
-
         guard isTracking.value else { return }
         let location = view.convert(event.locationInWindow, from: nil)
         // Add a waypoint to the new path
@@ -47,6 +44,12 @@ class DrawingViewResponder {
 
     func mouseUp(with event: NSEvent) {
         isTracking.value = false
+
+        // If the last item was tiny, just undo drawing it.
+        // This stops random clicks from appearing in the Undo stack
+        if let count = drawings.value.last?.path.elementCount, count < 2 {
+            undoManager.undo()
+        }
     }
 
     func keyDown(with event: NSEvent) {
@@ -63,6 +66,7 @@ class DrawingViewResponder {
         case KeyCodes.charR: shapePressed(2)
         case KeyCodes.charC: shapePressed(3)
         case KeyCodes.escape: escapePressed()
+        case KeyCodes.slash: slashKeyboardKeyHandler.send(())
         default: break
         }
     }

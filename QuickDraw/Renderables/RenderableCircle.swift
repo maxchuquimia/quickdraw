@@ -13,7 +13,7 @@ class RenderableCircle: Renderable {
     private let center: CGPoint
 
     override var actionName: String {
-        return "Circle"
+        return Copy("renderable.type.circle")
     }
 
     required init(center: CGPoint) {

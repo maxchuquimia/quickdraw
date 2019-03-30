@@ -18,6 +18,7 @@ enum KeyCodes {
     static let color5 = kVK_ANSI_5
 
     static let escape = kVK_Escape
+    static let slash = kVK_ANSI_Slash
 
     static let charL = kVK_ANSI_L
     static let charA = kVK_ANSI_A
@@ -36,6 +37,7 @@ enum KeyCodes {
         KeyCodes.color4,
         KeyCodes.color5,
         KeyCodes.escape,
+        KeyCodes.slash,
         KeyCodes.charL,
         KeyCodes.charA,
         KeyCodes.charR,

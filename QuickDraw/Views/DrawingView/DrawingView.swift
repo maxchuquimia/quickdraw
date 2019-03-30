@@ -12,11 +12,11 @@ class DrawingView: NSView, Watcher {
 
     private let model = DrawingViewResponder()
     private let colorsRadioGroup = RadioButtonGroup(options: [
-        ColorRadioButton(item: #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1), title: "1"),
-        ColorRadioButton(item: #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1), title: "2"),
-        ColorRadioButton(item: #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1), title: "3"),
-        ColorRadioButton(item: #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1), title: "4"),
-        ColorRadioButton(item: #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1), title: "5"),
+        ColorRadioButton(item: .systemRed, title: "1"),
+        ColorRadioButton(item: .systemYellow, title: "2"),
+        ColorRadioButton(item: .systemGreen, title: "3"),
+        ColorRadioButton(item: .systemBlue, title: "4"),
+        ColorRadioButton(item: .systemPurple, title: "5"),
     ])
     private let shapesRadioGroup = RadioButtonGroup<DrawingViewResponder.Shape, ShapeRadioButton>(options: [
         ShapeRadioButton(item: .line),
@@ -28,6 +28,10 @@ class DrawingView: NSView, Watcher {
         $0.setFrameSize(NSSize(width: 6, height: 6))
         $0.wantsLayer = true
         $0.layer?.cornerRadius = $0.frame.size.height / 2.0
+    }
+
+    private let infoView: InfoView = create {
+        $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
     override var mouseDownCanMoveWindow: Bool { return false }
@@ -43,6 +47,7 @@ class DrawingView: NSView, Watcher {
         model.drawings += weak(Function.redraw(renderables:))
         model.colorKeyboardKeyHandler += weak(Function.keyboard(selectedColor:))
         model.shapeKeyboardKeyHandler += weak(Function.keyboard(selectedShape:))
+        model.slashKeyboardKeyHandler += weak(Function.keyboardPressedSlash)
         model.isTracking += weak(Function.model(isTracking:))
         colorsRadioGroup.selectedItem += weak(Function.update(selectedColor:))
         shapesRadioGroup.selectedItem += weak(Function.update(selectedShape:))
@@ -61,6 +66,7 @@ class DrawingView: NSView, Watcher {
     }
 
     private func createLayout() {
+        addSubview(infoView)
         addSubview(brush)
 
         colorsRadioGroup.translatesAutoresizingMaskIntoConstraints = false
@@ -70,6 +76,9 @@ class DrawingView: NSView, Watcher {
         addSubview(shapesRadioGroup)
 
         NSLayoutConstraint.activate(
+            infoView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            infoView.centerYAnchor.constraint(equalTo: centerYAnchor),
+
             colorsRadioGroup.leftAnchor.constraint(equalTo: leftAnchor, constant: 30),
             colorsRadioGroup.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -30),
 
@@ -124,8 +133,15 @@ extension DrawingView {
 
     func model(isTracking: Bool) {
         brush.isHidden = isTracking
-        Log("Updated Brush", brush.isHidden)
         needsDisplay = true
+
+        if isTracking && !infoView.isHidden {
+            infoView.isHidden = true
+        }
+    }
+
+    func keyboardPressedSlash() {
+        infoView.isHidden = !infoView.isHidden
     }
 
     func keyboard(selectedColor index: Int) {

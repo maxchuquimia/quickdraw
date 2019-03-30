@@ -8,6 +8,10 @@
 
 import Cocoa
 
+//let displayID = CGMainDisplayID()
+//let imageRef = CGDisplayCreateImage(displayID)
+//        FileManager.default.homeDirectoryForCurrentUser
+
 class TransparentWindow: NSWindow {
 
     override func awakeFromNib() {

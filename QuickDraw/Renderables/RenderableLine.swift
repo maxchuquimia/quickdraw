@@ -14,7 +14,11 @@ class RenderableLine: Renderable {
     private var arrowHead = NSBezierPath()
 
     override var actionName: String {
-        return "Arrow"
+        if isArrow {
+            return Copy("renderable.type.arrow")
+        } else {
+            return Copy("renderable.type.line")
+        }
     }
 
     override var autoRespondsToFill: Bool { return false }
