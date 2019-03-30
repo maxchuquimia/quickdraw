@@ -6,4 +6,8 @@ A macOS app for drawing over the screen
 2. I would like to increase my experience in macOS development (I am an iOS developer)
 3. I would like to experiment with creating a simple architecture that has no third party dependencies
 
+## To Do
+- Multi screen support (based on pointer)
+- Enable Command+S for screenshotting
+
 More info to come.
