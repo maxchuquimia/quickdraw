@@ -19,6 +19,9 @@
 		554829DD224F201700AA1AB5 /* TextExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554829DC224F201700AA1AB5 /* TextExtensions.swift */; };
 		554829DF224F21E100AA1AB5 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554829DE224F21E100AA1AB5 /* Colors.swift */; };
 		554829E1224F222800AA1AB5 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 554829E0224F222800AA1AB5 /* Colors.xcassets */; };
+		554F1913225049D100BB04C7 /* Screenshotter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554F1912225049D100BB04C7 /* Screenshotter.swift */; };
+		554F191522504C8800BB04C7 /* NSNotification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554F191422504C8800BB04C7 /* NSNotification+Extension.swift */; };
+		554F191722504F9F00BB04C7 /* NSDateFormatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554F191622504F9F00BB04C7 /* NSDateFormatter+Extension.swift */; };
 		556CE775223613B800EE15CE /* Rect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556CE774223613B800EE15CE /* Rect.swift */; };
 		5578F39E2249853D00DACBB3 /* NSTrackingArea+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5578F39D2249853D00DACBB3 /* NSTrackingArea+Extension.swift */; };
 		5578F3A022498D4200DACBB3 /* Numbers+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5578F39F22498D4200DACBB3 /* Numbers+Extension.swift */; };
@@ -65,6 +68,9 @@
 		554829DC224F201700AA1AB5 /* TextExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextExtensions.swift; sourceTree = "<group>"; };
 		554829DE224F21E100AA1AB5 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		554829E0224F222800AA1AB5 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		554F1912225049D100BB04C7 /* Screenshotter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screenshotter.swift; sourceTree = "<group>"; };
+		554F191422504C8800BB04C7 /* NSNotification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSNotification+Extension.swift"; sourceTree = "<group>"; };
+		554F191622504F9F00BB04C7 /* NSDateFormatter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSDateFormatter+Extension.swift"; sourceTree = "<group>"; };
 		556CE774223613B800EE15CE /* Rect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rect.swift; sourceTree = "<group>"; };
 		5578F39D2249853D00DACBB3 /* NSTrackingArea+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTrackingArea+Extension.swift"; sourceTree = "<group>"; };
 		5578F39F22498D4200DACBB3 /* Numbers+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Numbers+Extension.swift"; sourceTree = "<group>"; };
@@ -154,6 +160,8 @@
 				5578F39D2249853D00DACBB3 /* NSTrackingArea+Extension.swift */,
 				5578F39F22498D4200DACBB3 /* Numbers+Extension.swift */,
 				554829DA224F1EAA00AA1AB5 /* NSEdgeInset+Extension.swift */,
+				554F191422504C8800BB04C7 /* NSNotification+Extension.swift */,
+				554F191622504F9F00BB04C7 /* NSDateFormatter+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -194,6 +202,14 @@
 				554829D8224EFFDC00AA1AB5 /* InfoView.swift */,
 			);
 			path = InfoView;
+			sourceTree = "<group>";
+		};
+		554F1911225049AF00BB04C7 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				554F1912225049D100BB04C7 /* Screenshotter.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		55A840B922489F95009093B8 /* RadioButton */ = {
@@ -237,6 +253,7 @@
 				55E785E5222DE90D00A91D79 /* AppDelegate.swift */,
 				55F110E7224C8C1D00D03388 /* Text */,
 				5501899F2234E2DC000E4EC1 /* Extensions */,
+				554F1911225049AF00BB04C7 /* Helpers */,
 				5501899E2234E216000E4EC1 /* Constants */,
 				5501899B2234E059000E4EC1 /* Math */,
 				55E78609222DF9E600A91D79 /* Renderables */,
@@ -324,6 +341,11 @@
 				TargetAttributes = {
 					55E785E1222DE90D00A91D79 = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -379,6 +401,8 @@
 				550F87D22238660900E66E79 /* Point.swift in Sources */,
 				55E785F6222DF20400A91D79 /* DrawingView.swift in Sources */,
 				55E785E8222DE90D00A91D79 /* ViewController.swift in Sources */,
+				554F191722504F9F00BB04C7 /* NSDateFormatter+Extension.swift in Sources */,
+				554F1913225049D100BB04C7 /* Screenshotter.swift in Sources */,
 				55E78602222DF98600A91D79 /* Create.swift in Sources */,
 				554829DD224F201700AA1AB5 /* TextExtensions.swift in Sources */,
 				554829D9224EFFDC00AA1AB5 /* InfoView.swift in Sources */,
@@ -386,6 +410,7 @@
 				5501899D2234E062000E4EC1 /* Circle.swift in Sources */,
 				55E78603222DF98600A91D79 /* Watcher.swift in Sources */,
 				55A840B822489E50009093B8 /* RadioButton.swift in Sources */,
+				554F191522504C8800BB04C7 /* NSNotification+Extension.swift in Sources */,
 				554829DB224F1EAA00AA1AB5 /* NSEdgeInset+Extension.swift in Sources */,
 				55F110EB224C8F4700D03388 /* Fonts.swift in Sources */,
 				55E78608222DF9A200A91D79 /* DrawingViewResponder.swift in Sources */,
@@ -539,7 +564,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = QuickDraw/QuickDraw.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = AXFS8D8E46;
@@ -558,7 +582,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = QuickDraw/QuickDraw.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = AXFS8D8E46;

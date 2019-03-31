@@ -8,10 +8,6 @@
 
 import Cocoa
 
-//let displayID = CGMainDisplayID()
-//let imageRef = CGDisplayCreateImage(displayID)
-//        FileManager.default.homeDirectoryForCurrentUser
-
 class TransparentWindow: NSWindow {
 
     override func awakeFromNib() {
@@ -32,10 +28,19 @@ class TransparentWindow: NSWindow {
     }
 }
 
-class ViewController: NSViewController {
+class ViewController: NSViewController, Watcher {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        NSNotification.saveButtonPressed += weak(Function.screenshotRequested)
+    }
+}
+
+private extension ViewController {
+
+    func screenshotRequested() {
+        guard let screen = view.window?.screen else { return }
+        Screenshotter.capture(screen: screen)
     }
 }
 
