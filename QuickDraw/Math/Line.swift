@@ -21,14 +21,14 @@ extension Math {
             return sqrt(pow(a.x - b.x, 2) + pow(a.y - b.y, 2))
         }
         
-        var angle: CGFloat {
+        var slope: CGFloat {
             return atan2(a.y - b.y, a.x - b.x)
         }
         
         func point(distanceFromA: CGFloat) -> CGPoint {
             
             let circle = Circle(center: a, radius: distanceFromA)
-            return circle.points(count: 1, offset:  angle).first!
+            return circle.points(count: 1, offset:  slope).first!
         }
         
         // Modified version of https://stackoverflow.com/a/45931831/1153630

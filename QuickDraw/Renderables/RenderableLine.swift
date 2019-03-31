@@ -45,31 +45,21 @@ class RenderableLine: Renderable {
         // Only show the arrow if we have more than 5 points
         guard path.elementCount > 5 else { return }
 
-        // this should only choose points far-ish away from eachother
         var angles: [CGFloat] = []
         var pre = path.currentPoint
 
-        path.lastPoints(upTo: 40).forEach { (point) in
+        path.lastPoints(upTo: 20).forEach { (point) in
 
-            let slope = atan2(pre.y - point.y, pre.x - point.x)
-            angles.append(slope)
+            let line = Math.Line(from: pre, to: point)
+
+            // If the distance is too short, ignore this. Kind of smooth out the jittering.
+            guard line.length > 2 else { return }
+
+            angles.append(line.slope)
             pre = point
         }
 
-
-//        let arrowCalculationCount = min(path.elementCount, 40)
-//
-//        (1..<arrowCalculationCount).forEach { (i) in
-//
-//            var points = [CGPoint](repeating: .zero, count: 3)
-//            path.element(at: path.elementCount - i, associatedPoints: &points)
-//            let slope = atan2(pre.y - points[0].y, pre.x - points[0].x)
-//            angles.append(slope)
-//
-//            pre = points[0]
-//        }
-
-        // Find the average slope of the line
+        // Find the average slope of the end of the line
         let slope = angles.reduce(0, { $0 + $1 }) / CGFloat(angles.count)
 
         let arrowTip = path.currentPoint
