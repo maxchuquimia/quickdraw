@@ -20,8 +20,9 @@
 		554829DF224F21E100AA1AB5 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554829DE224F21E100AA1AB5 /* Colors.swift */; };
 		554829E1224F222800AA1AB5 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 554829E0224F222800AA1AB5 /* Colors.xcassets */; };
 		554F1913225049D100BB04C7 /* Screenshotter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554F1912225049D100BB04C7 /* Screenshotter.swift */; };
-		554F191522504C8800BB04C7 /* NSNotification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554F191422504C8800BB04C7 /* NSNotification+Extension.swift */; };
+		554F191522504C8800BB04C7 /* NotificationCenter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554F191422504C8800BB04C7 /* NotificationCenter+Extension.swift */; };
 		554F191722504F9F00BB04C7 /* NSDateFormatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554F191622504F9F00BB04C7 /* NSDateFormatter+Extension.swift */; };
+		554F19192250B8D400BB04C7 /* NotificationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554F19182250B8D400BB04C7 /* NotificationDelegate.swift */; };
 		556CE775223613B800EE15CE /* Rect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556CE774223613B800EE15CE /* Rect.swift */; };
 		5578F39E2249853D00DACBB3 /* NSTrackingArea+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5578F39D2249853D00DACBB3 /* NSTrackingArea+Extension.swift */; };
 		5578F3A022498D4200DACBB3 /* Numbers+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5578F39F22498D4200DACBB3 /* Numbers+Extension.swift */; };
@@ -69,8 +70,9 @@
 		554829DE224F21E100AA1AB5 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		554829E0224F222800AA1AB5 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		554F1912225049D100BB04C7 /* Screenshotter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screenshotter.swift; sourceTree = "<group>"; };
-		554F191422504C8800BB04C7 /* NSNotification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSNotification+Extension.swift"; sourceTree = "<group>"; };
+		554F191422504C8800BB04C7 /* NotificationCenter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationCenter+Extension.swift"; sourceTree = "<group>"; };
 		554F191622504F9F00BB04C7 /* NSDateFormatter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSDateFormatter+Extension.swift"; sourceTree = "<group>"; };
+		554F19182250B8D400BB04C7 /* NotificationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationDelegate.swift; sourceTree = "<group>"; };
 		556CE774223613B800EE15CE /* Rect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rect.swift; sourceTree = "<group>"; };
 		5578F39D2249853D00DACBB3 /* NSTrackingArea+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTrackingArea+Extension.swift"; sourceTree = "<group>"; };
 		5578F39F22498D4200DACBB3 /* Numbers+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Numbers+Extension.swift"; sourceTree = "<group>"; };
@@ -160,7 +162,7 @@
 				5578F39D2249853D00DACBB3 /* NSTrackingArea+Extension.swift */,
 				5578F39F22498D4200DACBB3 /* Numbers+Extension.swift */,
 				554829DA224F1EAA00AA1AB5 /* NSEdgeInset+Extension.swift */,
-				554F191422504C8800BB04C7 /* NSNotification+Extension.swift */,
+				554F191422504C8800BB04C7 /* NotificationCenter+Extension.swift */,
 				554F191622504F9F00BB04C7 /* NSDateFormatter+Extension.swift */,
 			);
 			path = Extensions;
@@ -208,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				554F1912225049D100BB04C7 /* Screenshotter.swift */,
+				554F19182250B8D400BB04C7 /* NotificationDelegate.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -391,6 +394,7 @@
 				550F87DB223A1B3900E66E79 /* NSLayoutConstraint+Extension.swift in Sources */,
 				55F110ED224C918300D03388 /* Images.swift in Sources */,
 				55E7860F222E407400A91D79 /* ColorRadioButton.swift in Sources */,
+				554F19192250B8D400BB04C7 /* NotificationDelegate.swift in Sources */,
 				55E78601222DF98600A91D79 /* General.swift in Sources */,
 				556CE775223613B800EE15CE /* Rect.swift in Sources */,
 				55E785FF222DF98600A91D79 /* Synchronicity.swift in Sources */,
@@ -410,7 +414,7 @@
 				5501899D2234E062000E4EC1 /* Circle.swift in Sources */,
 				55E78603222DF98600A91D79 /* Watcher.swift in Sources */,
 				55A840B822489E50009093B8 /* RadioButton.swift in Sources */,
-				554F191522504C8800BB04C7 /* NSNotification+Extension.swift in Sources */,
+				554F191522504C8800BB04C7 /* NotificationCenter+Extension.swift in Sources */,
 				554829DB224F1EAA00AA1AB5 /* NSEdgeInset+Extension.swift in Sources */,
 				55F110EB224C8F4700D03388 /* Fonts.swift in Sources */,
 				55E78608222DF9A200A91D79 /* DrawingViewResponder.swift in Sources */,

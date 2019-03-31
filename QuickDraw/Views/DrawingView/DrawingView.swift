@@ -48,6 +48,7 @@ class DrawingView: NSView, Watcher {
         model.colorKeyboardKeyHandler += weak(Function.keyboard(selectedColor:))
         model.shapeKeyboardKeyHandler += weak(Function.keyboard(selectedShape:))
         model.slashKeyboardKeyHandler += weak(Function.keyboardPressedSlash)
+        model.configureForScreenshotHandler += weak(Function.configure(forScreenshot:))
         model.isTracking += weak(Function.model(isTracking:))
         colorsRadioGroup.selectedItem += weak(Function.update(selectedColor:))
         shapesRadioGroup.selectedItem += weak(Function.update(selectedShape:))
@@ -63,6 +64,7 @@ class DrawingView: NSView, Watcher {
 
         guard let undoManager = window?.undoManager else { return }
         model.undoManager = undoManager
+        model.view = self
     }
 
     private func createLayout() {
@@ -142,6 +144,12 @@ extension DrawingView {
 
     func keyboardPressedSlash() {
         infoView.isHidden = !infoView.isHidden
+    }
+
+    func configure(forScreenshot isScreenshot: Bool) {
+        colorsRadioGroup.isHidden = isScreenshot
+        shapesRadioGroup.isHidden = isScreenshot
+        brush.isHidden = isScreenshot
     }
 
     func keyboard(selectedColor index: Int) {

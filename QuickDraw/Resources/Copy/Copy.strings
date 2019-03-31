@@ -21,3 +21,7 @@
 "renderable.type.arrow" = "Arrow";
 "renderable.type.rectangle" = "Rectangle";
 "renderable.type.circle" = "Circle";
+
+"screenshot.notification.title" = "Quick Draw";
+"screenshot.notification.success" = "Screenshot saved to ~/Desktop/%@";
+"screenshot.notification.error" = "Unable to save screenshot";

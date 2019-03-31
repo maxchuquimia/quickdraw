@@ -8,7 +8,6 @@ A macOS app for drawing over the screen
 
 ## To Do
 - Multi screen support (based on pointer)
-- Enable Command+S for screenshotting
 - Improve arrow direction algorithm. Currently drawing a westward arrow slowly results in the arrowhead spinning around as the line's slope tries to loop
 
 More info to come.

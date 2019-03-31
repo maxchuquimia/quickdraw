@@ -1,5 +1,5 @@
 //
-//  NSNotification+Extension.swift
+//  NotificationCenter+Extension.swift
 //  QuickDraw
 //
 //  Created by Max Chuquimia on 31/3/19.
@@ -8,8 +8,9 @@
 
 import Foundation
 
-extension NSNotification {
+extension NotificationCenter {
 
     // These can act like strongly-typed NSNotifications
     static let saveButtonPressed: Handler<Void> = .init()
+    static let screenshotSuccessNotificationPressed: Handler<Void> = .init()
 }

@@ -28,19 +28,9 @@ class TransparentWindow: NSWindow {
     }
 }
 
-class ViewController: NSViewController, Watcher {
+class ViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        NSNotification.saveButtonPressed += weak(Function.screenshotRequested)
     }
 }
-
-private extension ViewController {
-
-    func screenshotRequested() {
-        guard let screen = view.window?.screen else { return }
-        Screenshotter.capture(screen: screen)
-    }
-}
-

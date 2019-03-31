@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class DrawingViewResponder {
+class DrawingViewResponder: Watcher {
 
     enum Shape {
         case arrow, line, rect, circle
@@ -18,13 +18,17 @@ class DrawingViewResponder {
     let colorKeyboardKeyHandler: Handler<Int> = .init()
     let shapeKeyboardKeyHandler: Handler<Int> = .init()
     let slashKeyboardKeyHandler: Handler<Void> = .init()
+    let configureForScreenshotHandler: Handler<Bool> = .init()
     let isTracking: Watchable<Bool> = .init(false)
     var selectedColor: NSColor = .white
     var selectedShape: Shape = .arrow
     var undoManager: UndoManager
+    weak var view: DrawingView?
 
     init(undoManager: UndoManager = .init()) {
         self.undoManager = undoManager
+
+        NotificationCenter.saveButtonPressed += weak(Function.screenshotRequested)
     }
 
     func mouseDown(with event: NSEvent, in view: NSView) {
@@ -123,6 +127,22 @@ private extension DrawingViewResponder {
         }
 
         append(drawing: shape)
+    }
+}
+
+// Mark: - Watch Handlers
+
+private extension DrawingViewResponder  {
+
+    func screenshotRequested() {
+        guard let screen = view?.window?.screen else { return }
+
+        configureForScreenshotHandler.send(true)
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            Screenshotter.shared.capture(screen: screen)
+            self.configureForScreenshotHandler.send(false)
+        }
     }
 }
 

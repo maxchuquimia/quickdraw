@@ -11,8 +11,10 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
+    let notificationDelegate = NotificationDelegate()
+
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
+        NSUserNotificationCenter.default.delegate = notificationDelegate
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -20,7 +22,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     @IBAction func saveButtonPressed(_ sender: NSMenuItem) {
-        NSNotification.saveButtonPressed.send()
+        NotificationCenter.saveButtonPressed.send()
     }
 }
 
