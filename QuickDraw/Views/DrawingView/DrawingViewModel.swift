@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class DrawingViewResponder: Watcher {
+class DrawingViewModel: Watcher {
 
     enum Shape {
         case arrow, line, rect, circle
@@ -31,14 +31,16 @@ class DrawingViewResponder: Watcher {
         NotificationCenter.saveButtonPressed += weak(Function.screenshotRequested)
     }
 
-    func mouseDown(with event: NSEvent, in view: NSView) {
+    func mouseDown(with event: NSEvent) {
+        guard let view = view else { return }
         isTracking.value = true
         let location = view.convert(event.locationInWindow, from: nil)
 
         createNewPath(startingAt: location)
     }
 
-    func mouseDragged(with event: NSEvent, in view: NSView) {
+    func mouseDragged(with event: NSEvent) {
+        guard let view = view else { return }
         guard isTracking.value else { return }
         let location = view.convert(event.locationInWindow, from: nil)
         // Add a waypoint to the new path
@@ -81,7 +83,7 @@ class DrawingViewResponder: Watcher {
 }
 
 // MARK: - Private
-private extension DrawingViewResponder {
+private extension DrawingViewModel {
 
     func colorPressed(_ index: Int) {
         colorKeyboardKeyHandler.send(index)
@@ -130,9 +132,8 @@ private extension DrawingViewResponder {
     }
 }
 
-// Mark: - Watch Handlers
-
-private extension DrawingViewResponder  {
+// Mark: - Bindings
+private extension DrawingViewModel  {
 
     func screenshotRequested() {
         guard let screen = view?.window?.screen else { return }
@@ -146,8 +147,8 @@ private extension DrawingViewResponder  {
     }
 }
 
-// MARK: - Undo / Redo
-private extension DrawingViewResponder {
+// MARK: - Drawing Actions & Undo / Redo
+private extension DrawingViewModel {
 
     func append(drawing: Renderable) {
         drawings.value.append(drawing)

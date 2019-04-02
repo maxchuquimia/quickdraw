@@ -44,7 +44,7 @@
 		55E78603222DF98600A91D79 /* Watcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E785FC222DF98600A91D79 /* Watcher.swift */; };
 		55E78604222DF98600A91D79 /* URLSession+Synced.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E785FD222DF98600A91D79 /* URLSession+Synced.swift */; };
 		55E78605222DF98600A91D79 /* Handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E785FE222DF98600A91D79 /* Handler.swift */; };
-		55E78608222DF9A200A91D79 /* DrawingViewResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E78607222DF9A200A91D79 /* DrawingViewResponder.swift */; };
+		55E78608222DF9A200A91D79 /* DrawingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E78607222DF9A200A91D79 /* DrawingViewModel.swift */; };
 		55E7860B222DFBEF00A91D79 /* Renderable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E7860A222DFBEF00A91D79 /* Renderable.swift */; };
 		55E7860D222E239F00A91D79 /* KeyCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E7860C222E239F00A91D79 /* KeyCodes.swift */; };
 		55E7860F222E407400A91D79 /* ColorRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E7860E222E407400A91D79 /* ColorRadioButton.swift */; };
@@ -99,7 +99,7 @@
 		55E785FC222DF98600A91D79 /* Watcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Watcher.swift; sourceTree = "<group>"; };
 		55E785FD222DF98600A91D79 /* URLSession+Synced.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URLSession+Synced.swift"; sourceTree = "<group>"; };
 		55E785FE222DF98600A91D79 /* Handler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Handler.swift; sourceTree = "<group>"; };
-		55E78607222DF9A200A91D79 /* DrawingViewResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingViewResponder.swift; sourceTree = "<group>"; };
+		55E78607222DF9A200A91D79 /* DrawingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingViewModel.swift; sourceTree = "<group>"; };
 		55E7860A222DFBEF00A91D79 /* Renderable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderable.swift; sourceTree = "<group>"; };
 		55E7860C222E239F00A91D79 /* KeyCodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyCodes.swift; sourceTree = "<group>"; };
 		55E7860E222E407400A91D79 /* ColorRadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorRadioButton.swift; sourceTree = "<group>"; };
@@ -290,8 +290,8 @@
 			isa = PBXGroup;
 			children = (
 				55E785E7222DE90D00A91D79 /* DrawingViewController.swift */,
+				55E78607222DF9A200A91D79 /* DrawingViewModel.swift */,
 				55E785F5222DF20400A91D79 /* DrawingView.swift */,
-				55E78607222DF9A200A91D79 /* DrawingViewResponder.swift */,
 				550F87D52239DE8C00E66E79 /* Controls */,
 			);
 			path = DrawingView;
@@ -425,7 +425,7 @@
 				554F191522504C8800BB04C7 /* NotificationCenter+Extension.swift in Sources */,
 				554829DB224F1EAA00AA1AB5 /* NSEdgeInset+Extension.swift in Sources */,
 				55F110EB224C8F4700D03388 /* Fonts.swift in Sources */,
-				55E78608222DF9A200A91D79 /* DrawingViewResponder.swift in Sources */,
+				55E78608222DF9A200A91D79 /* DrawingViewModel.swift in Sources */,
 				5584963B224DD2F300387F02 /* InteractionDisabledView.swift in Sources */,
 				55E7860D222E239F00A91D79 /* KeyCodes.swift in Sources */,
 				55B94ED822376E0800024616 /* RenderableCircle.swift in Sources */,

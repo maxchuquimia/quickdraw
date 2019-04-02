@@ -10,20 +10,21 @@ import Cocoa
 
 class DrawingView: NSView, Watcher {
 
-    private let model = DrawingViewResponder()
-    private let colorsRadioGroup = RadioButtonGroup(options: [
+    let colorsRadioGroup = RadioButtonGroup(options: [
         ColorRadioButton(item: .systemRed, title: "1"),
         ColorRadioButton(item: .systemYellow, title: "2"),
         ColorRadioButton(item: .systemGreen, title: "3"),
         ColorRadioButton(item: .systemBlue, title: "4"),
         ColorRadioButton(item: .systemPurple, title: "5"),
     ])
-    private let shapesRadioGroup = RadioButtonGroup<DrawingViewResponder.Shape, ShapeRadioButton>(options: [
+
+    let shapesRadioGroup = RadioButtonGroup<DrawingViewModel.Shape, ShapeRadioButton>(options: [
         ShapeRadioButton(item: .line),
         ShapeRadioButton(item: .arrow),
         ShapeRadioButton(item: .rect),
         ShapeRadioButton(item: .circle),
     ])
+
     private let brush: InteractionDisabledView = create {
         $0.setFrameSize(NSSize(width: 6, height: 6))
         $0.wantsLayer = true
@@ -33,6 +34,8 @@ class DrawingView: NSView, Watcher {
     private let infoView: InfoView = create {
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
+
+    private var drawings: [Renderable] = []
 
     override var mouseDownCanMoveWindow: Bool { return false }
     override var acceptsFirstResponder: Bool { return true }
@@ -44,27 +47,8 @@ class DrawingView: NSView, Watcher {
 
     private func setup() {
         wantsLayer = true
-        model.drawings += weak(Function.redraw(renderables:))
-        model.colorKeyboardKeyHandler += weak(Function.keyboard(selectedColor:))
-        model.shapeKeyboardKeyHandler += weak(Function.keyboard(selectedShape:))
-        model.slashKeyboardKeyHandler += weak(Function.keyboardPressedSlash)
-        model.configureForScreenshotHandler += weak(Function.configure(forScreenshot:))
-        model.isTracking += weak(Function.model(isTracking:))
         colorsRadioGroup.selectedItem += weak(Function.update(selectedColor:))
-        shapesRadioGroup.selectedItem += weak(Function.update(selectedShape:))
         createLayout()
-
-        becomeFirstResponder()
-    }
-
-    override func viewDidMoveToWindow() {
-        super.viewDidMoveToWindow()
-
-        NSTrackingArea.setup(in: self)
-
-        guard let undoManager = window?.undoManager else { return }
-        model.undoManager = undoManager
-        model.view = self
     }
 
     private func createLayout() {
@@ -91,38 +75,7 @@ class DrawingView: NSView, Watcher {
 
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
-        model.drawings.value.forEach { $0.render() }
-    }
-
-    override func mouseDown(with event: NSEvent) {
-        super.mouseDown(with: event)
-        model.mouseDown(with: event, in: self)
-    }
-
-    override func mouseDragged(with event: NSEvent) {
-        super.mouseDragged(with: event)
-        model.mouseDragged(with: event, in: self)
-        updateBrush(for: event)
-    }
-
-    override func mouseMoved(with event: NSEvent) {
-        super.mouseMoved(with: event)
-        updateBrush(for: event)
-    }
-
-    override func mouseUp(with event: NSEvent) {
-        super.mouseUp(with: event)
-        model.mouseUp(with: event)
-    }
-
-    override func keyDown(with event: NSEvent) {
-        super.keyDown(with: event)
-        model.keyDown(with: event)
-    }
-
-    // Stop the bell sound from playing on known key presses that the system doesn't know we will handle
-    override func performKeyEquivalent(with event: NSEvent) -> Bool {
-        return model.canHandle(key: event.keyCode)
+        drawings.forEach { $0.render() }
     }
 }
 
@@ -130,6 +83,7 @@ class DrawingView: NSView, Watcher {
 extension DrawingView {
 
     func redraw(renderables: [Renderable]) {
+        drawings = renderables
         needsDisplay = true
     }
 
@@ -161,18 +115,13 @@ extension DrawingView {
     }
 
     func update(selectedColor: NSColor) {
-        model.selectedColor = selectedColor
         brush.layer?.backgroundColor = selectedColor.cgColor
         shapesRadioGroup.buttons.forEach({ $0.tintColor = selectedColor })
     }
-
-    func update(selectedShape: DrawingViewResponder.Shape) {
-        model.selectedShape = selectedShape
-    }
 }
 
-// MARK: - Private
-private extension DrawingView {
+// MARK: - Public
+extension DrawingView {
 
     func updateBrush(for event: NSEvent) {
         let location = event.locationInWindow.offset(x: -brush.frame.width / 2, y: -brush.frame.width / 2)
