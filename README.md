@@ -7,7 +7,6 @@ A macOS app for drawing over the screen
 3. I would like to experiment with creating a simple architecture that has no third party dependencies
 
 ## To Do
-- Multi screen support (based on pointer)
 - Improve arrow direction algorithm. Currently drawing a westward arrow slowly results in the arrowhead spinning around as the line's slope tries to loop
 
 More info to come.

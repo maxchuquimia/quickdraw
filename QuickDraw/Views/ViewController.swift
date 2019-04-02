@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class TransparentWindow: NSWindow {
+class TransparentWindow: NSWindow, Watcher {
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,7 +24,12 @@ class TransparentWindow: NSWindow {
             item.menuFormRepresentation = nil
         })
 
-        setFrame(NSScreen.main!.visibleFrame, display: true)
+        ScreenDaemon.shared.currentScreen += weak(Function.screenChanged(to:))
+    }
+
+    func screenChanged(to screen: NSScreen?) {
+        guard let screen = screen else { return }
+        setFrame(screen.visibleFrame, display: true)
     }
 }
 

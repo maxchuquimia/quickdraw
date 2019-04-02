@@ -17,6 +17,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NSUserNotificationCenter.default.delegate = notificationDelegate
     }
 
+    func applicationDidBecomeActive(_ notification: Notification) {
+        ScreenDaemon.shared.startTimer()
+    }
+
+    func applicationDidResignActive(_ notification: Notification) {
+        ScreenDaemon.shared.stopTimer()
+    }
+
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }

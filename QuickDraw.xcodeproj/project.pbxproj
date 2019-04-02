@@ -54,6 +54,7 @@
 		55F110E9224C8C2A00D03388 /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F110E8224C8C2A00D03388 /* Text.swift */; };
 		55F110EB224C8F4700D03388 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F110EA224C8F4700D03388 /* Fonts.swift */; };
 		55F110ED224C918300D03388 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F110EC224C918300D03388 /* Images.swift */; };
+		55F2DD712251D55B009ADE14 /* ScreenDaemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F2DD702251D55B009ADE14 /* ScreenDaemon.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -107,6 +108,7 @@
 		55F110E8224C8C2A00D03388 /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
 		55F110EA224C8F4700D03388 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		55F110EC224C918300D03388 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
+		55F2DD702251D55B009ADE14 /* ScreenDaemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenDaemon.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +213,7 @@
 			children = (
 				554F1912225049D100BB04C7 /* Screenshotter.swift */,
 				554F19182250B8D400BB04C7 /* NotificationDelegate.swift */,
+				55F2DD702251D55B009ADE14 /* ScreenDaemon.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -406,6 +409,7 @@
 				55E785F6222DF20400A91D79 /* DrawingView.swift in Sources */,
 				55E785E8222DE90D00A91D79 /* ViewController.swift in Sources */,
 				554F191722504F9F00BB04C7 /* NSDateFormatter+Extension.swift in Sources */,
+				55F2DD712251D55B009ADE14 /* ScreenDaemon.swift in Sources */,
 				554F1913225049D100BB04C7 /* Screenshotter.swift in Sources */,
 				55E78602222DF98600A91D79 /* Create.swift in Sources */,
 				554829DD224F201700AA1AB5 /* TextExtensions.swift in Sources */,
