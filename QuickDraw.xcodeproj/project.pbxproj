@@ -33,7 +33,7 @@
 		55B94ED822376E0800024616 /* RenderableCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B94ED722376E0800024616 /* RenderableCircle.swift */; };
 		55B94EDA223772CE00024616 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B94ED9223772CE00024616 /* Math.swift */; };
 		55E785E6222DE90D00A91D79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E785E5222DE90D00A91D79 /* AppDelegate.swift */; };
-		55E785E8222DE90D00A91D79 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E785E7222DE90D00A91D79 /* ViewController.swift */; };
+		55E785E8222DE90D00A91D79 /* DrawingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E785E7222DE90D00A91D79 /* DrawingViewController.swift */; };
 		55E785EA222DE90F00A91D79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55E785E9222DE90F00A91D79 /* Assets.xcassets */; };
 		55E785ED222DE90F00A91D79 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55E785EB222DE90F00A91D79 /* Main.storyboard */; };
 		55E785F6222DF20400A91D79 /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E785F5222DF20400A91D79 /* DrawingView.swift */; };
@@ -54,6 +54,7 @@
 		55F110E9224C8C2A00D03388 /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F110E8224C8C2A00D03388 /* Text.swift */; };
 		55F110EB224C8F4700D03388 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F110EA224C8F4700D03388 /* Fonts.swift */; };
 		55F110ED224C918300D03388 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F110EC224C918300D03388 /* Images.swift */; };
+		55F17E7322540EEC00F9E1D3 /* TransparentWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F17E7222540EEC00F9E1D3 /* TransparentWindow.swift */; };
 		55F2DD712251D55B009ADE14 /* ScreenDaemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F2DD702251D55B009ADE14 /* ScreenDaemon.swift */; };
 /* End PBXBuildFile section */
 
@@ -85,7 +86,7 @@
 		55B94ED9223772CE00024616 /* Math.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
 		55E785E2222DE90D00A91D79 /* QuickDraw.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickDraw.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55E785E5222DE90D00A91D79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		55E785E7222DE90D00A91D79 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		55E785E7222DE90D00A91D79 /* DrawingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingViewController.swift; sourceTree = "<group>"; };
 		55E785E9222DE90F00A91D79 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		55E785EC222DE90F00A91D79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		55E785EE222DE90F00A91D79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -108,6 +109,7 @@
 		55F110E8224C8C2A00D03388 /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
 		55F110EA224C8F4700D03388 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		55F110EC224C918300D03388 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
+		55F17E7222540EEC00F9E1D3 /* TransparentWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransparentWindow.swift; sourceTree = "<group>"; };
 		55F2DD702251D55B009ADE14 /* ScreenDaemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenDaemon.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -184,7 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				550F87D7223A0AA500E66E79 /* Components */,
-				55E785E7222DE90D00A91D79 /* ViewController.swift */,
+				55F17E7222540EEC00F9E1D3 /* TransparentWindow.swift */,
 				55E78606222DF99600A91D79 /* DrawingView */,
 				554829E2224F3D6B00AA1AB5 /* InfoView */,
 			);
@@ -287,6 +289,7 @@
 		55E78606222DF99600A91D79 /* DrawingView */ = {
 			isa = PBXGroup;
 			children = (
+				55E785E7222DE90D00A91D79 /* DrawingViewController.swift */,
 				55E785F5222DF20400A91D79 /* DrawingView.swift */,
 				55E78607222DF9A200A91D79 /* DrawingViewResponder.swift */,
 				550F87D52239DE8C00E66E79 /* Controls */,
@@ -395,6 +398,7 @@
 				55E78611222E4B9900A91D79 /* RenderableLine.swift in Sources */,
 				55F110E6224C899400D03388 /* BaseRadioButton.swift in Sources */,
 				550F87DB223A1B3900E66E79 /* NSLayoutConstraint+Extension.swift in Sources */,
+				55F17E7322540EEC00F9E1D3 /* TransparentWindow.swift in Sources */,
 				55F110ED224C918300D03388 /* Images.swift in Sources */,
 				55E7860F222E407400A91D79 /* ColorRadioButton.swift in Sources */,
 				554F19192250B8D400BB04C7 /* NotificationDelegate.swift in Sources */,
@@ -407,7 +411,7 @@
 				55F110E9224C8C2A00D03388 /* Text.swift in Sources */,
 				550F87D22238660900E66E79 /* Point.swift in Sources */,
 				55E785F6222DF20400A91D79 /* DrawingView.swift in Sources */,
-				55E785E8222DE90D00A91D79 /* ViewController.swift in Sources */,
+				55E785E8222DE90D00A91D79 /* DrawingViewController.swift in Sources */,
 				554F191722504F9F00BB04C7 /* NSDateFormatter+Extension.swift in Sources */,
 				55F2DD712251D55B009ADE14 /* ScreenDaemon.swift in Sources */,
 				554F1913225049D100BB04C7 /* Screenshotter.swift in Sources */,

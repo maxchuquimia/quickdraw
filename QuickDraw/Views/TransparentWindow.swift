@@ -1,8 +1,8 @@
 //
-//  ViewController.swift
+//  TransparentWindow.swift
 //  QuickDraw
 //
-//  Created by Max Chuquimia on 5/3/19.
+//  Created by Max Chuquimia on 3/4/19.
 //  Copyright © 2019 Max Chuquimia. All rights reserved.
 //
 
@@ -24,18 +24,7 @@ class TransparentWindow: NSWindow, Watcher {
             item.menuFormRepresentation = nil
         })
 
-        ScreenDaemon.shared.currentScreen += weak(Function.screenChanged(to:))
-    }
-
-    func screenChanged(to screen: NSScreen?) {
-        guard let screen = screen else { return }
+        guard let screen = NSScreen.main else { return }
         setFrame(screen.visibleFrame, display: true)
-    }
-}
-
-class ViewController: NSViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
     }
 }
