@@ -23,12 +23,15 @@ class DrawingViewModel: Watcher {
     var selectedColor: NSColor = .white
     var selectedShape: Shape = .arrow
     var undoManager: UndoManager
+    private let cache: Cache<NSScreen, [Renderable]>
     weak var view: DrawingView?
 
-    init(undoManager: UndoManager = .init()) {
+    init(undoManager: UndoManager = .init(), cache: Cache<NSScreen, [Renderable]> = .init()) {
         self.undoManager = undoManager
+        self.cache = cache
 
         NotificationCenter.saveButtonPressed += weak(Function.screenshotRequested)
+        ScreenDaemon.shared.screenChanged += weak(Function.screenChanged(screens:))
     }
 
     func mouseDown(with event: NSEvent) {
@@ -145,6 +148,21 @@ private extension DrawingViewModel  {
             self.configureForScreenshotHandler.send(false)
         }
     }
+
+    func screenChanged(screens: (old: NSScreen?, new: NSScreen?)) {
+        if let screen = screens.old {
+            cache[screen] = drawings.value
+        }
+
+        if let screen = screens.new {
+            drawings.value = cache[screen] ?? []
+
+            // At this stage we kind of shot ourselves in the foot by using just one window
+            // The undo history gets confused when we swap out the drawing array when moving between screens
+            // For now, just clear it.
+            clearUndoHistory()
+        }
+    }
 }
 
 // MARK: - Drawing Actions & Undo / Redo
@@ -157,7 +175,7 @@ private extension DrawingViewModel {
             self.remove(drawing: drawing)
         }
 
-        undoManager.setActionName(Copy("drawing.undo.drawAction", drawing.actionName))
+        undoManager.setActionName(Copy("drawing.undo.drawAction", drawing.actionName, screenName))
     }
 
     func remove(drawing: Renderable) {
@@ -167,7 +185,7 @@ private extension DrawingViewModel {
             self.append(drawing: drawing)
         }
 
-        undoManager.setActionName(Copy("drawing.undo.drawAction", drawing.actionName))
+        undoManager.setActionName(Copy("drawing.undo.drawAction", drawing.actionName, screenName))
     }
 
     func clearDrawings() {
@@ -178,7 +196,7 @@ private extension DrawingViewModel {
             self.restore(drawings: backup)
         }
 
-        undoManager.setActionName(Copy("drawing.undo.clearAction"))
+        undoManager.setActionName(Copy("drawing.undo.clearAction", screenName))
     }
 
     func restore(drawings: [Renderable]) {
@@ -188,10 +206,14 @@ private extension DrawingViewModel {
             self.clearDrawings()
         }
 
-        undoManager.setActionName(Copy("drawing.undo.clearAction"))
+        undoManager.setActionName(Copy("drawing.undo.clearAction", screenName))
     }
 
     func clearUndoHistory() {
         undoManager.removeAllActions(withTarget: self)
+    }
+
+    var screenName: String {
+        return view?.window?.screen?.displayName ?? Copy("error.unknownScreenName")
     }
 }

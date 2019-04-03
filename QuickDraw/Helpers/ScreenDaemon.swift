@@ -13,6 +13,7 @@ class ScreenDaemon {
     static let shared = ScreenDaemon()
 
     let currentScreen: Watchable<NSScreen?> = .init(nil)
+    let screenChanged: Handler<(old: NSScreen?, new: NSScreen?)> = .init()
 
     private var timer: Timer?
     private init() { }
@@ -37,6 +38,7 @@ class ScreenDaemon {
         let mouseScreen = getScreenWithMouse()
 
         if currentScreen.value != mouseScreen {
+            screenChanged.send((old: currentScreen.value, new: mouseScreen))
             currentScreen.value = mouseScreen
         }
     }

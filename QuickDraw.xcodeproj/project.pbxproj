@@ -55,6 +55,8 @@
 		55F110EB224C8F4700D03388 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F110EA224C8F4700D03388 /* Fonts.swift */; };
 		55F110ED224C918300D03388 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F110EC224C918300D03388 /* Images.swift */; };
 		55F17E7322540EEC00F9E1D3 /* TransparentWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F17E7222540EEC00F9E1D3 /* TransparentWindow.swift */; };
+		55F17E7522542AA300F9E1D3 /* NSScreen+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F17E7422542AA300F9E1D3 /* NSScreen+Extension.swift */; };
+		55F17E77225436D400F9E1D3 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F17E76225436D400F9E1D3 /* Cache.swift */; };
 		55F2DD712251D55B009ADE14 /* ScreenDaemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F2DD702251D55B009ADE14 /* ScreenDaemon.swift */; };
 /* End PBXBuildFile section */
 
@@ -110,6 +112,8 @@
 		55F110EA224C8F4700D03388 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		55F110EC224C918300D03388 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		55F17E7222540EEC00F9E1D3 /* TransparentWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransparentWindow.swift; sourceTree = "<group>"; };
+		55F17E7422542AA300F9E1D3 /* NSScreen+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSScreen+Extension.swift"; sourceTree = "<group>"; };
+		55F17E76225436D400F9E1D3 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		55F2DD702251D55B009ADE14 /* ScreenDaemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenDaemon.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -164,6 +168,7 @@
 				550189A02234E2FA000E4EC1 /* NSBezierPath+Extension.swift */,
 				550F87DA223A1B3900E66E79 /* NSLayoutConstraint+Extension.swift */,
 				5578F39D2249853D00DACBB3 /* NSTrackingArea+Extension.swift */,
+				55F17E7422542AA300F9E1D3 /* NSScreen+Extension.swift */,
 				5578F39F22498D4200DACBB3 /* Numbers+Extension.swift */,
 				554829DA224F1EAA00AA1AB5 /* NSEdgeInset+Extension.swift */,
 				554F191422504C8800BB04C7 /* NotificationCenter+Extension.swift */,
@@ -216,6 +221,7 @@
 				554F1912225049D100BB04C7 /* Screenshotter.swift */,
 				554F19182250B8D400BB04C7 /* NotificationDelegate.swift */,
 				55F2DD702251D55B009ADE14 /* ScreenDaemon.swift */,
+				55F17E76225436D400F9E1D3 /* Cache.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -415,6 +421,7 @@
 				554F191722504F9F00BB04C7 /* NSDateFormatter+Extension.swift in Sources */,
 				55F2DD712251D55B009ADE14 /* ScreenDaemon.swift in Sources */,
 				554F1913225049D100BB04C7 /* Screenshotter.swift in Sources */,
+				55F17E77225436D400F9E1D3 /* Cache.swift in Sources */,
 				55E78602222DF98600A91D79 /* Create.swift in Sources */,
 				554829DD224F201700AA1AB5 /* TextExtensions.swift in Sources */,
 				554829D9224EFFDC00AA1AB5 /* InfoView.swift in Sources */,
@@ -435,6 +442,7 @@
 				550189A52235C5C9000E4EC1 /* Line.swift in Sources */,
 				550189A12234E2FA000E4EC1 /* NSBezierPath+Extension.swift in Sources */,
 				55E78605222DF98600A91D79 /* Handler.swift in Sources */,
+				55F17E7522542AA300F9E1D3 /* NSScreen+Extension.swift in Sources */,
 				554829DF224F21E100AA1AB5 /* Colors.swift in Sources */,
 				550F87D9223A0AB300E66E79 /* RadioButtonGroup.swift in Sources */,
 				5578F39E2249853D00DACBB3 /* NSTrackingArea+Extension.swift in Sources */,
