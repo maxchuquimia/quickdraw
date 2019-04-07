@@ -10,6 +10,10 @@ import Cocoa
 
 class RenderableLine: Renderable {
 
+    enum Metrics {
+        static let arrowRadius = 18.f
+    }
+
     let isArrow: Bool
     private var arrowHead = NSBezierPath()
 
@@ -45,29 +49,25 @@ class RenderableLine: Renderable {
         // Only show the arrow if we have more than 5 points
         guard path.elementCount > 5 else { return }
 
-        var angles: [CGFloat] = []
-        var pre = path.currentPoint
+        var angle: CGFloat?
 
-        path.lastPoints(upTo: 20).forEach { (point) in
+        for point in path.lastPoints(upTo: 50) {
 
-            let line = Math.Line(from: pre, to: point)
-
-            guard angles.count == 0 else { return }
+            let line = Math.Line(from: path.currentPoint, to: point)
 
             // If the distance is too short, ignore this. Kind of smooth out the jittering.
-            guard line.length > 17 else { return }
+            guard line.length >= Metrics.arrowRadius else { continue }
 
-            angles.append(line.slope)
-            pre = point
+            angle = line.slope
+            break
         }
 
-        // Find the average slope of the end of the line
-        let slope = angles.reduce(0, { $0 + $1 }) / CGFloat(angles.count)
+        guard let slope = angle else { return }
 
         let arrowTip = path.currentPoint
 
         // To draw the two base point of the arrow isoceles, imagine a circle with the tip at the center
-        let circleAroundTip = Math.Circle(center: arrowTip, radius: 18)
+        let circleAroundTip = Math.Circle(center: arrowTip, radius: Metrics.arrowRadius)
         let arrowLeft = circleAroundTip.point(angle: -slope - (.pi * 0.3))
         let arrowRight = circleAroundTip.point(angle: -slope - (.pi * 0.6))
 
