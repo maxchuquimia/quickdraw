@@ -52,8 +52,10 @@ class RenderableLine: Renderable {
 
             let line = Math.Line(from: pre, to: point)
 
+            guard angles.count == 0 else { return }
+
             // If the distance is too short, ignore this. Kind of smooth out the jittering.
-            guard line.length > 2 else { return }
+            guard line.length > 17 else { return }
 
             angles.append(line.slope)
             pre = point
