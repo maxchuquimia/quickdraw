@@ -70,6 +70,7 @@
 		550F87D8223A0AB300E66E79 /* RadioButtonGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonGroup.swift; sourceTree = "<group>"; };
 		550F87DA223A1B3900E66E79 /* NSLayoutConstraint+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Extension.swift"; sourceTree = "<group>"; };
 		55316C7B22599AF500596BEA /* Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delegate.swift; sourceTree = "<group>"; };
+		55316C7D2259A56F00596BEA /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		554829D8224EFFDC00AA1AB5 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		554829DA224F1EAA00AA1AB5 /* NSEdgeInset+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSEdgeInset+Extension.swift"; sourceTree = "<group>"; };
 		554829DC224F201700AA1AB5 /* TextExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextExtensions.swift; sourceTree = "<group>"; };
@@ -249,6 +250,7 @@
 		55E785D9222DE90D00A91D79 = {
 			isa = PBXGroup;
 			children = (
+				55316C7D2259A56F00596BEA /* README.md */,
 				55E785E4222DE90D00A91D79 /* QuickDraw */,
 				55E785E3222DE90D00A91D79 /* Products */,
 			);
