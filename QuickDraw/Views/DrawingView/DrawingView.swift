@@ -10,6 +10,8 @@ import Cocoa
 
 class DrawingView: NSView, Watcher {
 
+    let keyEquivalentHandler: Delegate<NSEvent, Bool> = .init(false)
+
     let colorsRadioGroup = RadioButtonGroup(options: [
         ColorRadioButton(item: .systemRed, title: "1"),
         ColorRadioButton(item: .systemYellow, title: "2"),
@@ -76,6 +78,11 @@ class DrawingView: NSView, Watcher {
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
         drawings.forEach { $0.render() }
+    }
+
+    // Stop the bell sound from playing on known key presses that the system doesn't know we will handle
+    override func performKeyEquivalent(with event: NSEvent) -> Bool {
+        return keyEquivalentHandler.execute(event)
     }
 }
 

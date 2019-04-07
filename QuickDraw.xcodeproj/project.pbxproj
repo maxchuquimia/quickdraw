@@ -14,6 +14,7 @@
 		550F87D22238660900E66E79 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550F87D12238660900E66E79 /* Point.swift */; };
 		550F87D9223A0AB300E66E79 /* RadioButtonGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550F87D8223A0AB300E66E79 /* RadioButtonGroup.swift */; };
 		550F87DB223A1B3900E66E79 /* NSLayoutConstraint+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550F87DA223A1B3900E66E79 /* NSLayoutConstraint+Extension.swift */; };
+		55316C7C22599AF500596BEA /* Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55316C7B22599AF500596BEA /* Delegate.swift */; };
 		554829D9224EFFDC00AA1AB5 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554829D8224EFFDC00AA1AB5 /* InfoView.swift */; };
 		554829DB224F1EAA00AA1AB5 /* NSEdgeInset+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554829DA224F1EAA00AA1AB5 /* NSEdgeInset+Extension.swift */; };
 		554829DD224F201700AA1AB5 /* TextExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554829DC224F201700AA1AB5 /* TextExtensions.swift */; };
@@ -68,6 +69,7 @@
 		550F87D12238660900E66E79 /* Point.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
 		550F87D8223A0AB300E66E79 /* RadioButtonGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonGroup.swift; sourceTree = "<group>"; };
 		550F87DA223A1B3900E66E79 /* NSLayoutConstraint+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Extension.swift"; sourceTree = "<group>"; };
+		55316C7B22599AF500596BEA /* Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delegate.swift; sourceTree = "<group>"; };
 		554829D8224EFFDC00AA1AB5 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		554829DA224F1EAA00AA1AB5 /* NSEdgeInset+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSEdgeInset+Extension.swift"; sourceTree = "<group>"; };
 		554829DC224F201700AA1AB5 /* TextExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextExtensions.swift; sourceTree = "<group>"; };
@@ -283,11 +285,12 @@
 			children = (
 				55E785FB222DF98500A91D79 /* Create.swift */,
 				55E785FA222DF98500A91D79 /* General.swift */,
-				55E785FE222DF98600A91D79 /* Handler.swift */,
 				55E785F8222DF98500A91D79 /* Synchronicity.swift */,
 				55E785FD222DF98600A91D79 /* URLSession+Synced.swift */,
+				55E785FE222DF98600A91D79 /* Handler.swift */,
 				55E785F9222DF98500A91D79 /* Watchable.swift */,
 				55E785FC222DF98600A91D79 /* Watcher.swift */,
+				55316C7B22599AF500596BEA /* Delegate.swift */,
 			);
 			path = Depdendencies;
 			sourceTree = "<group>";
@@ -410,6 +413,7 @@
 				554F19192250B8D400BB04C7 /* NotificationDelegate.swift in Sources */,
 				55E78601222DF98600A91D79 /* General.swift in Sources */,
 				556CE775223613B800EE15CE /* Rect.swift in Sources */,
+				55316C7C22599AF500596BEA /* Delegate.swift in Sources */,
 				55E785FF222DF98600A91D79 /* Synchronicity.swift in Sources */,
 				55E78600222DF98600A91D79 /* Watchable.swift in Sources */,
 				55E7860B222DFBEF00A91D79 /* Renderable.swift in Sources */,

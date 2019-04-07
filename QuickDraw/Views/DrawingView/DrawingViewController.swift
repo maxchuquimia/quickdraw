@@ -23,6 +23,7 @@ class DrawingViewController: NSViewController, Watcher {
 
         canvas.colorsRadioGroup.selectedItem += weak(Function.update(selectedColor:))
         canvas.shapesRadioGroup.selectedItem += weak(Function.update(selectedShape:))
+        canvas.keyEquivalentHandler.action = weak(Function.performKeyEquivalent)
 
         model.drawings += canvas.weak(DrawingView.redraw(renderables:))
         model.colorKeyboardKeyHandler += canvas.weak(DrawingView.keyboard(selectedColor:))
@@ -73,7 +74,6 @@ class DrawingViewController: NSViewController, Watcher {
         model.keyDown(with: event)
     }
 
-    // Stop the bell sound from playing on known key presses that the system doesn't know we will handle
     override func performKeyEquivalent(with event: NSEvent) -> Bool {
         return model.canHandle(key: event.keyCode)
     }
