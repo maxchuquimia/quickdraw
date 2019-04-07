@@ -24,7 +24,7 @@ class Screenshotter: Watcher {
 
         let destinationURL = FileManager.default
             .homeDirectoryForCurrentUser
-            .appendingPathComponent("Desktop")
+            .appendingPathComponent("Downloads")
             .appendingPathComponent(filename)
             .appendingPathExtension("png")
 

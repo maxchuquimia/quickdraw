@@ -11,7 +11,7 @@
 "info.shortcut.hide" = "⌘H";
 "info.shortcut.hide.info" = "Hide Quick Draw";
 "info.shortcut.screenshot" = "⌘S";
-"info.shortcut.screenshot.info" = "Save a screenshot to the Desktop";
+"info.shortcut.screenshot.info" = "Save a screenshot to Downloads";
 "info.footnote" = "Quick Draw is an Open Source project, hosted on Github.";
 
 "drawing.undo.drawAction" = "Draw %@ on %@";
@@ -23,7 +23,7 @@
 "renderable.type.circle" = "Circle";
 
 "screenshot.notification.title" = "Quick Draw";
-"screenshot.notification.success" = "Screenshot saved to ~/Desktop/%@";
+"screenshot.notification.success" = "Screenshot saved to ~/Downloads/%@";
 "screenshot.notification.error" = "Unable to save screenshot";
 
 "error.unknownScreenName" = "Screen";
