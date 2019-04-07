@@ -1,4 +1,7 @@
 # Quick Draw
+
+![screenshot](https://raw.githubusercontent.com/Jugale/quickdraw/master/AppStore/Screenshot%201.png)
+
 Do you need a quck, easy and unobtrusive way to highlight content while screencasting?
 Rather than circling your mouse around wildly, try QuickDraw!
 
@@ -11,5 +14,3 @@ When QuickDraw is active, you can draw lines, arrows, rectangle and circles over
 
 ## Found a bug?
 Feel free to create an issue, or fix it yourself - pull requests are welcome!
-
-More info to come.
