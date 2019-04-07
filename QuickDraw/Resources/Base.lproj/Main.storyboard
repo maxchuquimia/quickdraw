@@ -662,7 +662,7 @@
                                     <items>
                                         <menuItem title="QuickDraw Help" keyEquivalent="?" id="FKE-Sm-Kum">
                                             <connections>
-                                                <action selector="showHelp:" target="Ady-hI-5gd" id="y7X-2Q-9no"/>
+                                                <action selector="helpPressed:" target="Voe-Tx-rLC" id="2Zd-4s-uOr"/>
                                             </connections>
                                         </menuItem>
                                     </items>

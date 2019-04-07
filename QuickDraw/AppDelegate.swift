@@ -32,5 +32,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBAction func saveButtonPressed(_ sender: NSMenuItem) {
         NotificationCenter.saveButtonPressed.send()
     }
+
+    @IBAction func helpPressed(_ sender: NSMenuItem) {
+        NSWorkspace.shared.open(URL(string: "https://github.com/Jugale/quickdraw/issues")!)
+    }
 }
 
