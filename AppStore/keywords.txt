@@ -1,0 +1,1 @@
+draw,annotate,arrow,mark,present,draw on screen,screen,highlight,screencast,markup,line
