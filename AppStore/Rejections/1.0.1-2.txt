@@ -1,0 +1,46 @@
+Guideline 2.4.5(i) - Performance
+
+
+Your app uses one or more entitlements which do not have matching functionality within the app. Apps should have only the minimum set of entitlements necessary for the app to function properly. Please remove all entitlements that are not needed by your app and submit an updated binary for review, including the following:
+
+com.apple.security.files.downloads.read-write￼
+
+Next Steps
+
+For links to essential video and documentation to learn how to sandbox your application, please see App Sandboxing.
+
+Commonly added entitlements that many apps don't need include:
+
+"com.apple.security.network.server"
+Apps that initiate outgoing connections (for example, to download new content from your server) only need to include "com.apple.security.network.client". The server entitlement is only necessary for apps that listen for and respond to incoming network connections (such as web or FTP servers).
+
+"com.apple.security.device.usb"
+Apps that interact with non-standard USB devices, including HID accessories such as joysticks, may need to include this entitlement. It is not necessary for accessing keyboards, mice, trackpads, printers or external drives such as thumb drives.
+
+Should you need code-level assistance implementing sandboxing, contact Apple Developer Technical Support.
+
+Guideline 2.4.5(i) - Performance
+
+
+Your application accesses the following location(s):
+
+Download folder.
+
+It would be appropriate for the app to save to a standard location, not the download folder.￼
+
+The majority of developers encountering this issue are opening files in Read/Write mode instead of Read-Only mode, in which case it should be changed to Read-Only.
+
+Other common reasons for this issue include:
+
+- creating or writing files in the above location(s), which are not valid locations for files to be written as stated in documentation.
+
+- writing to the above location(s) without using a valid app-id as a container for the written files.
+
+Next Steps
+
+Please review the File-System Usage Requirements for the App Store of Submitting to the Mac App Store for the locations apps are allowed to write and for further guidance.
+
+If you are unable to reproduce this issue, ensure you are testing the exact version of the app that you submitted for review, and that you're doing so in a minimally privileged environment. See Technical Q&A QA1778: How to reproduce bugs reported against Mac App Store submissions.
+
+For information on how to symbolicate and read a crash log, please see Technical Note TN2123 - CrashReporter.
+

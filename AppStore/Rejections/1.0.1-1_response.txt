@@ -1,0 +1,9 @@
+Hi,
+
+I need to be able to write a screenshot to the Downloads folder when the user presses the keyboard shortcut Command+S. This functionality is called out to the user on the HUD display that appears when first launching the app.
+This screenshot is different to a normal screenshot in that Quick Draw hides the palette first.
+
+Cheers,
+MaxC
+
+

@@ -1,0 +1,17 @@
+Guideline 2.4.5(i) - Performance
+
+
+In order to continue reviewing your app, we require additional information.
+
+Your app uses one or more entitlements which do not appear to have matching functionality within the app. Please describe how and where the app uses the following entitlements by adding your comments to Resolution Center. You will not need to upload a new binary to provide this information.
+
+Apps should have only the minimum set of entitlements necessary for the app to function properly. If there are entitlements that are not needed, please remove them and submit an updated binary. You will need to Developer Reject the app to upload an updated version.
+
+---
+com.apple.security.files.downloads.read-write￼
+---
+
+
+
+Since your App Store Connect status is Metadata Rejected, we do NOT require a new binary. To revise the metadata, visit App Store Connect to select your app and revise the desired metadata values. Once you’ve completed all changes, reply to this message in Resolution Center and we will continue the review.
+
