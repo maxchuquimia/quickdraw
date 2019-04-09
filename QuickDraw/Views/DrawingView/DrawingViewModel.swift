@@ -18,7 +18,6 @@ class DrawingViewModel: Watcher {
     let colorKeyboardKeyHandler: Handler<Int> = .init()
     let shapeKeyboardKeyHandler: Handler<Int> = .init()
     let slashKeyboardKeyHandler: Handler<Void> = .init()
-    let configureForScreenshotHandler: Handler<Bool> = .init()
     let isTracking: Watchable<Bool> = .init(false)
     var selectedColor: NSColor = .white
     var selectedShape: Shape = .arrow
@@ -140,13 +139,7 @@ private extension DrawingViewModel  {
 
     func screenshotRequested() {
         guard let screen = view?.window?.screen else { return }
-
-        configureForScreenshotHandler.send(true)
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-            Screenshotter.shared.capture(screen: screen)
-            self.configureForScreenshotHandler.send(false)
-        }
+        Screenshotter.shared.capture(screen: screen)
     }
 
     func screenChanged(screens: (old: NSScreen?, new: NSScreen?)) {

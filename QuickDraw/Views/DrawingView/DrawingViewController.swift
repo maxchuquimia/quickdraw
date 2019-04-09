@@ -29,8 +29,8 @@ class DrawingViewController: NSViewController, Watcher {
         model.colorKeyboardKeyHandler += canvas.weak(DrawingView.keyboard(selectedColor:))
         model.shapeKeyboardKeyHandler += canvas.weak(DrawingView.keyboard(selectedShape:))
         model.slashKeyboardKeyHandler += canvas.weak(DrawingView.keyboardPressedSlash)
-        model.configureForScreenshotHandler += canvas.weak(DrawingView.configure(forScreenshot:))
         model.isTracking += canvas.weak(DrawingView.model(isTracking:))
+        Screenshotter.shared.configureForScreenshotHandler += canvas.weak(DrawingView.configure(forScreenshot:))
 
         model.view = canvas
 

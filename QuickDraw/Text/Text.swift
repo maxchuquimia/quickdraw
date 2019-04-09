@@ -8,20 +8,32 @@
 
 import Cocoa
 
-class Text {
-    private(set) var font: NSFont = .systemFont(ofSize: 12)
-    private(set) var color: NSColor = .black
+class Text: AttributedStringGenerator {
+    private(set) var _font: NSFont = .systemFont(ofSize: 12)
+    private(set) var _color: NSColor = .black
+    private(set) var _link: URL?
 
     let string: String
+
+    var attributes: [NSAttributedString.Key : Any] {
+
+        var attributes: [NSAttributedString.Key : Any] = [
+            .font : _font,
+            .foregroundColor: _color
+        ]
+
+        if let link = _link {
+            attributes[.link] = link
+        }
+
+        return attributes
+    }
 
     var attributedString: NSAttributedString {
 
         let attributedString = NSMutableAttributedString(
             string: string,
-            attributes: [
-                .font : font,
-                .foregroundColor: color
-            ]
+            attributes: attributes
         )
 
         return attributedString.copy() as! NSAttributedString
@@ -31,22 +43,40 @@ class Text {
         self.string = string
     }
 
-    init(copy string: String) {
-        self.string = Copy(string)
+    convenience init(copy string: String) {
+        self.init(Copy(string))
     }
 
-    init?(_ string: String?) {
+    convenience init?(_ string: String?) {
         guard let string = string else { return nil }
-        self.string = string
+        self.init(string)
     }
 
     func font(_ font: NSFont) -> Self {
-        self.font = font
+        _font = font
         return self
     }
 
     func color(_ color: NSColor) -> Self {
-        self.color = color
+        _color = color
         return self
+    }
+
+    func link(_ link: URL) -> Self {
+        _link = link
+        return self
+    }
+}
+
+class TextComposition: AttributedStringGenerator {
+
+    let attributedString: NSAttributedString
+    let attributes: [NSAttributedString.Key : Any]
+
+    init(_ a: NSAttributedString, _ b: NSAttributedString, _ attributes: [NSAttributedString.Key : Any]) {
+        let s = (a.mutableCopy() as! NSMutableAttributedString)
+        s.append(b)
+        self.attributedString = s.copy() as! NSAttributedString
+        self.attributes = attributes
     }
 }

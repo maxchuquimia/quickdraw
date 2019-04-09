@@ -12,8 +12,10 @@ class Screenshotter: Watcher {
 
     static let shared = Screenshotter()
     private(set) var lastScreenshotLocation: URL?
+    let configureForScreenshotHandler: Handler<Bool> = .init()
+    let screenshotLocationChangedHandler: Handler<Void> = .init()
 
-    init() {
+    private init() {
         NotificationCenter.screenshotSuccessNotificationPressed += weak(Function.screenshotPressed)
     }
 
@@ -22,15 +24,40 @@ class Screenshotter: Watcher {
 
         let filename = "Quick Draw \(Date().as(.screenshot))"
 
-        let destinationURL = FileManager.default
-            .homeDirectoryForCurrentUser
-            .appendingPathComponent("Downloads")
+        var screenshotDirectory = self.screenshotDirectory
+        var waitTime: TimeInterval = 0.1
+
+        if screenshotDirectory == nil {
+            screenshotDirectory = showLocationPicker()
+            // If the NSOpenPanel was shown... we need to wait for it to disappear before the screenshot occurs
+            waitTime = 0.3
+        }
+
+        guard let directory = screenshotDirectory else {
+            showFailedNotification()
+            return
+        }
+
+        configureForScreenshotHandler.send(true)
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + waitTime) {
+            self.capture(screen: screen, to: directory, named: filename)
+            self.configureForScreenshotHandler.send(false)
+        }
+    }
+
+    private func capture(screen: NSScreen, to directory: URL, named filename: String) {
+
+        let destinationURL = directory
             .appendingPathComponent(filename)
             .appendingPathExtension("png")
 
         var success = false
 
+        _ = directory.startAccessingSecurityScopedResource()
         defer {
+            directory.stopAccessingSecurityScopedResource()
+
             if success {
                 lastScreenshotLocation = destinationURL
                 playSound()
@@ -52,7 +79,7 @@ class Screenshotter: Watcher {
     private func showSuccessNotification() {
         let notification = NSUserNotification()
         notification.title = Copy("screenshot.notification.title")
-        notification.informativeText = Copy("screenshot.notification.success", lastScreenshotLocation?.lastPathComponent ?? "?")
+        notification.informativeText = Copy("screenshot.notification.success", lastScreenshotLocation?.pathByAddingTildeIfPossible ?? "?")
         notification.soundName = nil
         notification.identifier = NotificationDelegate.Identifier.screenshotSuccess.rawValue
         NSUserNotificationCenter.default.deliver(notification)
@@ -68,14 +95,53 @@ class Screenshotter: Watcher {
 
     private func playSound() {
         // I found this by running `sudo opensnoop | grep aif` and taking a screenshot 😉
-        NSSound(
-            contentsOfFile: "/System/Library/Components/CoreAudio.component/Contents/SharedSupport/SystemSounds/system/Grab.aif",
-            byReference: true
-        )?.play()
+        NSSound(named: "shutter")?.play()
     }
 
     private func screenshotPressed() {
         guard let lastLocation = lastScreenshotLocation else { return }
         NSWorkspace.shared.activateFileViewerSelecting([lastLocation])
+    }
+
+    @discardableResult
+    func showLocationPicker() -> URL? {
+
+        let openPanel = NSOpenPanel()
+        openPanel.canChooseFiles = false
+        openPanel.allowsMultipleSelection = false
+        openPanel.canChooseDirectories = true
+        openPanel.canCreateDirectories = true
+        openPanel.title = Copy("screenshot.locationPicker.title")
+
+        let result = openPanel.runModal()
+
+        if result == .OK, let url = openPanel.url {
+            do {
+                let data = try url.bookmarkData(options: [.withSecurityScope], includingResourceValuesForKeys: nil, relativeTo: nil)
+                Persistence.screenshotBookmark.value = data
+                screenshotLocationChangedHandler.send()
+            } catch {
+                LogError(error)
+                return nil
+            }
+        }
+
+        return openPanel.url
+    }
+
+    var screenshotDirectory: URL? {
+        guard let bookmark = Persistence.screenshotBookmark.value else { return nil }
+        do {
+            var isStale: Bool = false
+            let url = try URL(resolvingBookmarkData: bookmark, options: [.withSecurityScope], relativeTo: nil, bookmarkDataIsStale: &isStale)
+            if isStale == true {
+                LogError("Bookmark is stale!")
+                return nil
+            }
+            return url
+        } catch {
+            LogError(error)
+            return nil
+        }
     }
 }
