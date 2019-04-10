@@ -1,0 +1,13 @@
+Hi,
+
+After the previous rejection I update Quick Draw to force the user to select a location the first time they save a screenshot. Is it possible that you selected your Downloads folder and you are rejecting due to subsequent saves being stored to the first folder selected?
+
+I have removed the Read/Write to Downloads entitlement so it is impossible that this is occurring. You can verify this by checking the entitlements file of the app (which I'm sure you have access to).
+
+In order to "remember" which folder the user has chosen, I used an "app-scoped bookmark" as described by https://developer.apple.com/library/archive/documentation/Security/Conceptual/AppSandboxDesignGuide/AppSandboxInDepth/AppSandboxInDepth.html#//apple_ref/doc/uid/TP40011183-CH3-SW16 . The purpose of the "app-scoped bookmark" is my exact use case: allow the user to choose a folder for processing output once.
+
+I would like to maintain my user experience of allowing users to save screenshots without needing to select a location every time: this is because Quick Draw will be using during live presentation and should be unobtrusive.
+
+Please let me know if I need to change my experience,
+
+MaxC

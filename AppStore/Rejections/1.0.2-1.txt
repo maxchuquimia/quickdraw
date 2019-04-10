@@ -1,0 +1,12 @@
+Hello,
+
+Thank you for your resubmission. After further review we have found that the previous rejection has not been resolved.
+
+
+Guideline 2.4.5(i) - Performance
+
+
+Your application still stores screenshots in the Download folder.
+
+The majority of developers encountering this issue are opening files in Read/Write mode instead of Read-Only mode, in which case it should be changed to Read-Only.
+
