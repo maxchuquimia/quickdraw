@@ -12,5 +12,6 @@ extension NotificationCenter {
 
     // These can act like strongly-typed NSNotifications
     static let saveButtonPressed: Handler<Void> = .init()
+    static let copyButtonPressed: Handler<Void> = .init()
     static let screenshotSuccessNotificationPressed: Handler<Void> = .init()
 }

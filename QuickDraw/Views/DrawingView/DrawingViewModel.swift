@@ -30,6 +30,7 @@ class DrawingViewModel: Watcher {
         self.cache = cache
 
         NotificationCenter.saveButtonPressed += weak(Function.screenshotRequested)
+        NotificationCenter.copyButtonPressed += weak(Function.copyScreenshotRequested)
         ScreenDaemon.shared.screenChanged += weak(Function.screenChanged(screens:))
     }
 
@@ -140,6 +141,11 @@ private extension DrawingViewModel  {
     func screenshotRequested() {
         guard let screen = view?.window?.screen else { return }
         Screenshotter.shared.capture(screen: screen)
+    }
+
+    func copyScreenshotRequested() {
+        guard let screen = view?.window?.screen else { return }
+        Screenshotter.shared.captureToClipboard(screen: screen)
     }
 
     func screenChanged(screens: (old: NSScreen?, new: NSScreen?)) {

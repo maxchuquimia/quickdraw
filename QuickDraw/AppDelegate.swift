@@ -33,6 +33,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NotificationCenter.saveButtonPressed.send()
     }
 
+    // For some reason this doesn't work with the keyboard shortcut... responder chain issue?
+    @IBAction func copyButtonPressed(_ sender: NSMenuItem) {
+        NotificationCenter.copyButtonPressed.send()
+    }
+
     @IBAction func helpPressed(_ sender: NSMenuItem) {
         NSWorkspace.shared.open(URL(string: "https://github.com/Jugale/quickdraw/issues")!)
     }

@@ -52,6 +52,7 @@ class InfoView: NSVisualEffectView, Watcher {
         add(shortcutStyle(Copy("info.shortcut.letters")), descriptionStyle(Copy("info.shortcut.letters.info")))
         add(shortcutStyle(Copy("info.shortcut.slash")), descriptionStyle(Copy("info.shortcut.slash.info")))
         add(shortcutStyle(Copy("info.shortcut.hide")), descriptionStyle(Copy("info.shortcut.hide.info")))
+        add(shortcutStyle(Copy("info.shortcut.screenshot.clipboard")), descriptionStyle(Copy("info.shortcut.screenshot.clipboard.info")))
         let screenshotLabel = add(shortcutStyle(Copy("info.shortcut.screenshot")), screenshotDescription()).1
         add(shortcutStyle(Copy("info.shortcut.esc")), descriptionStyle(Copy("info.shortcut.esc.info")), customSpace: 30)
         add(centered: footnote)

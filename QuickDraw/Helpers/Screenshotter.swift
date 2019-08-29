@@ -46,6 +46,23 @@ class Screenshotter: Watcher {
         }
     }
 
+    func captureToClipboard(screen: NSScreen) {
+        configureForScreenshotHandler.send(true)
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+
+            guard let screenshot = self.getImage(of: screen) else { return }
+            let image = NSImage(cgImage: screenshot, size: screen.frame.size)
+            self.playSound()
+
+            NSPasteboard.general.clearContents()
+            NSPasteboard.general.writeObjects([image])
+
+            self.showCopySuccessNotification()
+
+            self.configureForScreenshotHandler.send(false)
+        }
+    }
     private func capture(screen: NSScreen, to directory: URL, named filename: String) {
 
         let destinationURL = directory
@@ -67,13 +84,18 @@ class Screenshotter: Watcher {
             }
         }
 
-        guard let identifier = screen.deviceDescription[.init("NSScreenNumber")] as? NSNumber else { return }
-        let displayId = CGDirectDisplayID(identifier.int32Value)
-        guard let screenshot = CGDisplayCreateImage(displayId) else { return }
+        guard let screenshot = getImage(of: screen) else { return }
 
         guard let destination = CGImageDestinationCreateWithURL(destinationURL as CFURL, kUTTypePNG, 1, nil) else { return }
         CGImageDestinationAddImage(destination, screenshot, nil)
         success = CGImageDestinationFinalize(destination)
+    }
+
+    private func getImage(of screen: NSScreen) -> CGImage? {
+        guard let identifier = screen.deviceDescription[.init("NSScreenNumber")] as? NSNumber else { return nil }
+        let displayId = CGDirectDisplayID(identifier.int32Value)
+        guard let screenshot = CGDisplayCreateImage(displayId) else { return nil }
+        return screenshot
     }
 
     private func showSuccessNotification() {
@@ -82,6 +104,15 @@ class Screenshotter: Watcher {
         notification.informativeText = Copy("screenshot.notification.success", lastScreenshotLocation?.pathByAddingTildeIfPossible ?? "?")
         notification.soundName = nil
         notification.identifier = NotificationDelegate.Identifier.screenshotSuccess.rawValue
+        NSUserNotificationCenter.default.deliver(notification)
+    }
+
+    private func showCopySuccessNotification() {
+        let notification = NSUserNotification()
+        notification.title = Copy("screenshot.notification.title")
+        notification.informativeText = Copy("screenshot.notification.success.clipboard")
+        notification.soundName = nil
+        notification.identifier = NotificationDelegate.Identifier.copyScreenshotSuccess.rawValue
         NSUserNotificationCenter.default.deliver(notification)
     }
 

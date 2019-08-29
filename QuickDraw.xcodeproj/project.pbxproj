@@ -11,6 +11,7 @@
 		550189A12234E2FA000E4EC1 /* NSBezierPath+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550189A02234E2FA000E4EC1 /* NSBezierPath+Extension.swift */; };
 		550189A32235C4D4000E4EC1 /* RenderableRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550189A22235C4D4000E4EC1 /* RenderableRect.swift */; };
 		550189A52235C5C9000E4EC1 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550189A42235C5C9000E4EC1 /* Line.swift */; };
+		550B421F231758C900ABC417 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550B421E231758C900ABC417 /* Application.swift */; };
 		550F87D22238660900E66E79 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550F87D12238660900E66E79 /* Point.swift */; };
 		550F87D9223A0AB300E66E79 /* RadioButtonGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550F87D8223A0AB300E66E79 /* RadioButtonGroup.swift */; };
 		550F87DB223A1B3900E66E79 /* NSLayoutConstraint+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550F87DA223A1B3900E66E79 /* NSLayoutConstraint+Extension.swift */; };
@@ -71,6 +72,7 @@
 		550189A02234E2FA000E4EC1 /* NSBezierPath+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSBezierPath+Extension.swift"; sourceTree = "<group>"; };
 		550189A22235C4D4000E4EC1 /* RenderableRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderableRect.swift; sourceTree = "<group>"; };
 		550189A42235C5C9000E4EC1 /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
+		550B421E231758C900ABC417 /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		550F87D12238660900E66E79 /* Point.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
 		550F87D8223A0AB300E66E79 /* RadioButtonGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonGroup.swift; sourceTree = "<group>"; };
 		550F87DA223A1B3900E66E79 /* NSLayoutConstraint+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Extension.swift"; sourceTree = "<group>"; };
@@ -299,6 +301,7 @@
 			isa = PBXGroup;
 			children = (
 				55E785F7222DF92600A91D79 /* Depdendencies */,
+				550B421E231758C900ABC417 /* Application.swift */,
 				55E785E5222DE90D00A91D79 /* AppDelegate.swift */,
 				55F110E7224C8C1D00D03388 /* Text */,
 				5501899F2234E2DC000E4EC1 /* Extensions */,
@@ -473,6 +476,7 @@
 				5536EDF0225C107600D3D2D9 /* Storable.swift in Sources */,
 				5536EDEE225C104B00D3D2D9 /* Persistence.swift in Sources */,
 				55F110EB224C8F4700D03388 /* Fonts.swift in Sources */,
+				550B421F231758C900ABC417 /* Application.swift in Sources */,
 				5536EDF4225C223A00D3D2D9 /* URL+Extensions.swift in Sources */,
 				55E78608222DF9A200A91D79 /* DrawingViewModel.swift in Sources */,
 				5584963B224DD2F300387F02 /* InteractionDisabledView.swift in Sources */,

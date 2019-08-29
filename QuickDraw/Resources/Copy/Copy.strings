@@ -10,6 +10,8 @@
 "info.shortcut.slash.info" = "Toggle this message";
 "info.shortcut.hide" = "⌘H";
 "info.shortcut.hide.info" = "Hide Quick Draw";
+"info.shortcut.screenshot.clipboard" = "⌘C";
+"info.shortcut.screenshot.clipboard.info" = "Copy screenshot to clipboard ";
 "info.shortcut.screenshot" = "⌘S";
 "info.shortcut.screenshot.info" = "Save a screenshot to ";
 "info.shortcut.screenshot.info.select" = ". . .";
@@ -26,6 +28,7 @@
 
 "screenshot.notification.title" = "Quick Draw";
 "screenshot.notification.success" = "Screenshot saved to %@";
+"screenshot.notification.success.clipboard" = "Screenshot copied to clipboard";
 "screenshot.notification.error" = "Unable to save screenshot";
 "screenshot.locationPicker.title" = "Select a folder to save Screenshots in";
 
