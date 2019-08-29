@@ -47,6 +47,8 @@ class Screenshotter: Watcher {
     }
 
     func captureToClipboard(screen: NSScreen) {
+        NSUserNotificationCenter.default.removeAllDeliveredNotifications()
+
         configureForScreenshotHandler.send(true)
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
