@@ -15,6 +15,9 @@ class Renderable {
     var fillColor: NSColor? = nil
     var lineWidth: CGFloat = 3
 
+    // i.e. should this be rendered as if Shift were held down?
+    var isModified = false
+
     /// For the Undo menu
     var actionName: String { die() }
 
@@ -28,6 +31,8 @@ class Renderable {
     }
 
     func render() {
+        let path = pathToRender()
+
         fillColor?.setFill()
         strokeColor?.setStroke()
 
@@ -45,5 +50,9 @@ class Renderable {
 
     func mouseMoved(to point: CGPoint) {
         didUpdateSinceLastRender = true
+    }
+
+    func pathToRender() -> NSBezierPath {
+        return path
     }
 }

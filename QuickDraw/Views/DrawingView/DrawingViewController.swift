@@ -74,6 +74,11 @@ class DrawingViewController: NSViewController, Watcher {
         model.keyDown(with: event)
     }
 
+    override func flagsChanged(with event: NSEvent) {
+        super.flagsChanged(with: event)
+        model.flagsChanged(with: event)
+    }
+
     override func performKeyEquivalent(with event: NSEvent) -> Bool {
         return model.canHandle(key: event.keyCode)
     }
