@@ -5,7 +5,7 @@
 "info.shortcut.numbers" = "1 … 5";
 "info.shortcut.numbers.info" = "Select colours 1 to 5";
 "info.shortcut.letters" = "LARC";
-"info.shortcut.letters.info" = "Select Line, Arrow, Rectangle or Circle";
+"info.shortcut.letters.info" = "Select Line, Arrow, Rectangle or Circle\nHold Shift while drawing for more";
 "info.shortcut.slash" = "/";
 "info.shortcut.slash.info" = "Toggle this message";
 "info.shortcut.hide" = "⌘H";
