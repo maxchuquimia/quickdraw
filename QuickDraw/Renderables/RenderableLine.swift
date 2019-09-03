@@ -51,15 +51,22 @@ class RenderableLine: Renderable {
 
         var angle: CGFloat?
 
-        for point in path.lastPoints(upTo: 50) {
-
-            let line = Math.Line(from: path.currentPoint, to: point)
-
-            // If the distance is too short, ignore this. Kind of smooth out the jittering.
-            guard line.length >= Metrics.arrowRadius else { continue }
-
+        if isModified {
+            guard path.points.count >= 2, let firstPoint = path.points.first, let lastPoint = path.points.last else { return }
+            let line = Math.Line(from: firstPoint, to: lastPoint)
             angle = line.slope
-            break
+        } else {
+            // Only draw the arrow head if we have at least x points to average
+            for point in path.lastPoints(upTo: 50) {
+
+                let line = Math.Line(from: path.currentPoint, to: point)
+
+                // If the distance is too short, ignore this. Kind of smooth out the jittering.
+                guard line.length >= Metrics.arrowRadius else { continue }
+
+                angle = line.slope
+                break
+            }
         }
 
         guard let slope = angle else { return }
@@ -92,5 +99,19 @@ class RenderableLine: Renderable {
     override func mouseMoved(to point: CGPoint) {
         super.mouseMoved(to: point)
         path.line(to: point)
+    }
+
+    override func pathToRender() -> NSBezierPath {
+
+        if isModified {
+            // Make this into a straight line using the first and last points
+            guard let firstPoint = path.points.first, let lastPoint = path.points.last else { return super.pathToRender() }
+            let straightPath = NSBezierPath()
+            straightPath.move(to: firstPoint)
+            straightPath.line(to: lastPoint)
+            return straightPath
+        } else {
+            return super.pathToRender()
+        }
     }
 }

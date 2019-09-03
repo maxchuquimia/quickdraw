@@ -26,4 +26,18 @@ extension NSBezierPath {
 
         return output
     }
+
+    var points: [CGPoint] {
+        var output: [CGPoint] = []
+
+        for i in (1..<elementCount) {
+            var points = [CGPoint](repeating: .zero, count: 3)
+
+            if element(at: elementCount - i, associatedPoints: &points) == .lineTo {
+                output.append(points[0])
+            }
+        }
+
+        return output
+    }
 }
