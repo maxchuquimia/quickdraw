@@ -14,6 +14,10 @@ class ShapeRadioButton: BaseRadioButton<DrawingViewModel.Shape> {
         static let imageInset = NSEdgeInsets.allEdges(8)
     }
 
+    var modified = false {
+        didSet { updateIcon() }
+    }
+
     var tintColor: NSColor = .white {
         didSet { reloadStyle() }
     }
@@ -32,12 +36,7 @@ class ShapeRadioButton: BaseRadioButton<DrawingViewModel.Shape> {
             imageView.constraintsFillingSuperview(insets: Metrics.imageInset)
         )
 
-        switch representedItem {
-        case .arrow: imageView.image = Image.Shape.arrow
-        case .line: imageView.image = Image.Shape.line
-        case .rect: imageView.image = Image.Shape.rectangle
-        case .circle: imageView.image = Image.Shape.circle
-        }
+        updateIcon()
     }
 
     override func styleNormal() {
@@ -50,5 +49,24 @@ class ShapeRadioButton: BaseRadioButton<DrawingViewModel.Shape> {
         super.styleSelected()
         layer?.borderColor = tintColor.cgColor
         layer?.backgroundColor = tintColor.cgColor
+    }
+
+    func updateIcon() {
+
+        if modified {
+            switch representedItem {
+                case .arrow: imageView.image = Image.Shape.arrowModified
+                case .line: imageView.image = Image.Shape.lineModified
+                case .rect: imageView.image = Image.Shape.rectangle
+                case .circle: imageView.image = Image.Shape.circle
+            }
+        } else {
+            switch representedItem {
+                case .arrow: imageView.image = Image.Shape.arrow
+                case .line: imageView.image = Image.Shape.line
+                case .rect: imageView.image = Image.Shape.rectangle
+                case .circle: imageView.image = Image.Shape.circle
+            }
+        }
     }
 }

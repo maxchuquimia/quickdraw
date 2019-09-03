@@ -19,7 +19,7 @@ class DrawingViewModel: Watcher {
     let shapeKeyboardKeyHandler: Handler<Int> = .init()
     let slashKeyboardKeyHandler: Handler<Void> = .init()
     let isTracking: Watchable<Bool> = .init(false)
-    var enableModification = false
+    let enableModification: Watchable<Bool> = .init(false)
     var selectedColor: NSColor = .white
     var selectedShape: Shape = .arrow
     var undoManager: UndoManager
@@ -49,7 +49,7 @@ class DrawingViewModel: Watcher {
         let location = view.convert(event.locationInWindow, from: nil)
         // Add a waypoint to the new path
         drawings.value.last?.mouseMoved(to: location)
-        drawings.value.last?.isModified = enableModification
+        drawings.value.last?.isModified = enableModification.value
         drawings.update()
     }
 
@@ -83,7 +83,7 @@ class DrawingViewModel: Watcher {
     }
 
     func flagsChanged(with event: NSEvent) {
-        enableModification = event.modifierFlags.contains(.shift)
+        enableModification.value = event.modifierFlags.contains(.shift)
     }
 
     func canHandle(key code: UInt16) -> Bool {

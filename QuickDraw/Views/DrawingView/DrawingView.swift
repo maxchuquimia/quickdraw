@@ -125,6 +125,10 @@ extension DrawingView {
         brush.layer?.backgroundColor = selectedColor.cgColor
         shapesRadioGroup.buttons.forEach({ $0.tintColor = selectedColor })
     }
+
+    func set(modified: Bool) {
+        shapesRadioGroup.buttons.forEach({ $0.modified = modified })
+    }
 }
 
 // MARK: - Public
