@@ -68,8 +68,8 @@ class RenderableLine: Renderable {
 
         // To draw the two base point of the arrow isoceles, imagine a circle with the tip at the center
         let circleAroundTip = Math.Circle(center: arrowTip, radius: Metrics.arrowRadius)
-        let arrowLeft = circleAroundTip.point(angle: -slope - (.pi * 0.3))
-        let arrowRight = circleAroundTip.point(angle: -slope - (.pi * 0.6))
+        let arrowLeft = circleAroundTip.point(angle: -slope - (.pi * 0.35))
+        let arrowRight = circleAroundTip.point(angle: -slope - (.pi * 0.65))
 
         arrowHead = NSBezierPath()
         arrowHead.move(to: arrowLeft)
