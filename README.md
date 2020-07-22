@@ -7,6 +7,23 @@ Rather than circling your mouse around wildly, try QuickDraw!
 
 When QuickDraw is active, you can draw lines, arrows, rectangle and circles over other windows on your screen. Press the escape key to clear the drawing, and press it again to jump right back to where you were without missing a beat!
 
+### Usage
+Keyboard Shortcuts
+```
+Key/s       Function
+~~~~~       ~~~~~~~~
+12345       Select colours 1 to 5
+L           Line mode - hold Shift while drawing for straight lines
+A           Arrow mode - hold Shift while drawing for straight arrows
+R           Rectangle mode
+C           Circle mode
+⌘C          Copy screenshot to Clipboard (permissions may be requested the first time)
+⌘S          Save a screenshot to Finder
+⌘Z          Undo
+/           Show or hide the startup message (persisted)
+ESC         Clear all drawings. Press again to hide Quick Draw
+```
+
 ## Motivation
 1. I  mentor an online Swift course and would like a quick, easy and unobtrusive way to highlight and describe code during video calls
 2. I would like to increase my experience in macOS development (I am an iOS developer)
