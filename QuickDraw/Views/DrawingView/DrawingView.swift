@@ -10,6 +10,12 @@ import Cocoa
 
 class DrawingView: NSView, Watcher {
 
+    private enum Metrics {
+        static let defaultSpacing: CGFloat = 30.0
+        static let defaultBottomSpacing: CGFloat = Metrics.defaultSpacing + Metrics.menuBarHeight
+        static let menuBarHeight = NSApplication.shared.mainMenu?.menuBarHeight ?? 0.0
+    }
+
     let keyEquivalentHandler: Delegate<NSEvent, Bool> = .init(false)
 
     let colorsRadioGroup = RadioButtonGroup(options: [
@@ -26,6 +32,14 @@ class DrawingView: NSView, Watcher {
         ShapeRadioButton(item: .rect),
         ShapeRadioButton(item: .circle),
     ])
+
+    private var colorsRadioGroupBottom: NSLayoutConstraint?
+    
+    var bottomSpacing: CGFloat = -Metrics.defaultBottomSpacing {
+        didSet {
+            colorsRadioGroupBottom?.constant = -bottomSpacing - Metrics.defaultBottomSpacing
+        }
+    }
 
     private let brush: InteractionDisabledView = create {
         $0.setFrameSize(NSSize(width: 6, height: 6))
@@ -67,12 +81,14 @@ class DrawingView: NSView, Watcher {
         shapesRadioGroup.translatesAutoresizingMaskIntoConstraints = false
         addSubview(shapesRadioGroup)
 
+        colorsRadioGroupBottom = colorsRadioGroup.bottomAnchor.constraint(equalTo: bottomAnchor, constant: bottomSpacing)
+
         NSLayoutConstraint.activate(
             infoView.centerXAnchor.constraint(equalTo: centerXAnchor),
             infoView.centerYAnchor.constraint(equalTo: centerYAnchor),
 
-            colorsRadioGroup.leftAnchor.constraint(equalTo: leftAnchor, constant: 30),
-            colorsRadioGroup.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -30),
+            colorsRadioGroup.leftAnchor.constraint(equalTo: leftAnchor, constant: Metrics.defaultSpacing),
+            colorsRadioGroupBottom!,
 
             shapesRadioGroup.leftAnchor.constraint(equalTo: colorsRadioGroup.rightAnchor, constant: 50),
             shapesRadioGroup.bottomAnchor.constraint(equalTo: colorsRadioGroup.bottomAnchor)

@@ -46,4 +46,9 @@ extension NSScreen {
             return name
         }
     }
+
+    var dockHeight: CGFloat {
+        visibleFrame.origin.y - frame.origin.y
+    }
+
 }

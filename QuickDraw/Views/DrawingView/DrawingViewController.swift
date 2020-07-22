@@ -46,7 +46,8 @@ class DrawingViewController: NSViewController, Watcher {
 
     func screenChanged(to screen: NSScreen?) {
         guard let screen = screen else { return }
-        view.window?.setFrame(screen.visibleFrame, display: true)
+        view.window?.setFrame(screen.frame, display: true)
+        canvas.bottomSpacing = screen.dockHeight
     }
 
     override func mouseDown(with event: NSEvent) {

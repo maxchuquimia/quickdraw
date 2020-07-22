@@ -25,6 +25,6 @@ class TransparentWindow: NSWindow, Watcher {
         })
 
         guard let screen = NSScreen.main else { return }
-        setFrame(screen.visibleFrame, display: true)
+        setFrame(screen.frame, display: true)
     }
 }
