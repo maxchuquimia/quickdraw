@@ -20,6 +20,10 @@ extension String: StoredAsSelf  {
     typealias Primitive = String
 }
 
+extension Bool: StoredAsSelf  {
+    typealias Primitive = Bool
+}
+
 extension Data: StoredAsSelf  {
     typealias Primitive = Data
 }

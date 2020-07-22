@@ -51,6 +51,10 @@ class DrawingView: NSView, Watcher {
         wantsLayer = true
         colorsRadioGroup.selectedItem += weak(Function.update(selectedColor:))
         createLayout()
+
+        if Persistence.infoMessageHidden.value == true {
+            infoView.isHidden = true
+        }
     }
 
     private func createLayout() {
@@ -105,6 +109,7 @@ extension DrawingView {
 
     func keyboardPressedSlash() {
         infoView.isHidden = !infoView.isHidden
+        Persistence.infoMessageHidden.value = infoView.isHidden
     }
 
     func configure(forScreenshot isScreenshot: Bool) {

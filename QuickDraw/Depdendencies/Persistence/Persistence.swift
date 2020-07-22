@@ -11,4 +11,6 @@ import Foundation
 enum Persistence {
 
     static var screenshotBookmark: Storable<Data> = "qd.screenshotBookmark"
+    static var infoMessageHidden: Storable<Bool> = "qd.infoMessageHidden"
+
 }
