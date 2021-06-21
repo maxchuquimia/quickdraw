@@ -300,7 +300,7 @@
 		55E785E4222DE90D00A91D79 /* QuickDraw */ = {
 			isa = PBXGroup;
 			children = (
-				55E785F7222DF92600A91D79 /* Depdendencies */,
+				55E785F7222DF92600A91D79 /* Dependencies */,
 				550B421E231758C900ABC417 /* Application.swift */,
 				55E785E5222DE90D00A91D79 /* AppDelegate.swift */,
 				55F110E7224C8C1D00D03388 /* Text */,
@@ -316,7 +316,7 @@
 			path = QuickDraw;
 			sourceTree = "<group>";
 		};
-		55E785F7222DF92600A91D79 /* Depdendencies */ = {
+		55E785F7222DF92600A91D79 /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
 				55E785FB222DF98500A91D79 /* Create.swift */,
@@ -327,7 +327,7 @@
 				5536EDEC225C103A00D3D2D9 /* Persistence */,
 				5536EDEB225C102E00D3D2D9 /* Bindings */,
 			);
-			path = Depdendencies;
+			path = Dependencies;
 			sourceTree = "<group>";
 		};
 		55E78606222DF99600A91D79 /* DrawingView */ = {
