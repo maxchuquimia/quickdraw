@@ -32,6 +32,7 @@ class InfoView: NSVisualEffectView, Watcher {
         wantsLayer = true
         layer?.backgroundColor = NSColor.clear.cgColor
         layer?.cornerRadius = 20
+        appearance = .init(named: .darkAqua)
 
         material = .hudWindow
         blendingMode = .behindWindow
