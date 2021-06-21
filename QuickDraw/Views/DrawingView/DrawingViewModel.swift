@@ -89,21 +89,34 @@ class DrawingViewModel: Watcher {
     func canHandle(key code: UInt16) -> Bool {
         return KeyCodes.allCases.contains(Int(code))
     }
+
+    func prepare() {
+        // Restore the state of the app to last launch
+        if let oldValue = Persistence.lastSelectedColorIndex.value {
+            colorPressed(oldValue)
+        }
+
+        if let oldValue = Persistence.lastSelectedShapeIndex.value {
+            shapePressed(oldValue)
+        }
+    }
+
 }
 
 // MARK: - Private
 private extension DrawingViewModel {
 
     func colorPressed(_ index: Int) {
+        Persistence.lastSelectedColorIndex.value = index
         colorKeyboardKeyHandler.send(index)
     }
 
     func shapePressed(_ index: Int) {
+        Persistence.lastSelectedShapeIndex.value = index
         shapeKeyboardKeyHandler.send(index)
     }
 
     func escapePressed() {
-
         if drawings.value.isEmpty {
             // Hide the window
             NSApplication.shared.hide(nil)
@@ -115,7 +128,6 @@ private extension DrawingViewModel {
     }
 
     func createNewPath(startingAt point: CGPoint) {
-
         let shape: Renderable
 
         switch selectedShape {

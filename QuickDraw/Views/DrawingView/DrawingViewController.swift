@@ -36,6 +36,7 @@ class DrawingViewController: NSViewController, Watcher {
         model.view = canvas
 
         NSTrackingArea.setup(in: canvas)
+        model.prepare()
     }
 
     override func viewDidAppear() {
@@ -88,6 +89,7 @@ class DrawingViewController: NSViewController, Watcher {
 
 // MARK: - Bindings
 private extension DrawingViewController {
+
     func update(selectedColor: NSColor) {
         model.selectedColor = selectedColor
     }
@@ -95,4 +97,5 @@ private extension DrawingViewController {
     func update(selectedShape: DrawingViewModel.Shape) {
         model.selectedShape = selectedShape
     }
+
 }

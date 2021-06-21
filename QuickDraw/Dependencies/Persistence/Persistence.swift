@@ -12,5 +12,7 @@ enum Persistence {
 
     static var screenshotBookmark: Storable<Data> = "qd.screenshotBookmark"
     static var infoMessageHidden: Storable<Bool> = "qd.infoMessageHidden"
+    static var lastSelectedColorIndex: Storable<Int> = "qd.lastSelectedColorIndex"
+    static var lastSelectedShapeIndex: Storable<Int> = "qd.lastSelectedShapeIndex"
 
 }

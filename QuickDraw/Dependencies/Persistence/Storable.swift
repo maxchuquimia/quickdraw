@@ -24,6 +24,10 @@ extension Bool: StoredAsSelf  {
     typealias Primitive = Bool
 }
 
+extension Int: StoredAsSelf  {
+    typealias Primitive = Int
+}
+
 extension Data: StoredAsSelf  {
     typealias Primitive = Data
 }
