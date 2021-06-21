@@ -28,6 +28,10 @@ extension Int: StoredAsSelf  {
     typealias Primitive = Int
 }
 
+extension CGFloat: StoredAsSelf  {
+    typealias Primitive = CGFloat
+}
+
 extension Data: StoredAsSelf  {
     typealias Primitive = Data
 }

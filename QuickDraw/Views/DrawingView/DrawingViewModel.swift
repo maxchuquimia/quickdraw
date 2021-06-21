@@ -18,6 +18,7 @@ class DrawingViewModel: Watcher {
     let colorKeyboardKeyHandler: Handler<Int> = .init()
     let shapeKeyboardKeyHandler: Handler<Int> = .init()
     let slashKeyboardKeyHandler: Handler<Void> = .init()
+    let optionSlashKeyboardKeyHandler: Handler<Void> = .init()
     let isTracking: Watchable<Bool> = .init(false)
     let enableModification: Watchable<Bool> = .init(false)
     var selectedColor: NSColor = .white
@@ -77,6 +78,7 @@ class DrawingViewModel: Watcher {
         case KeyCodes.charR: shapePressed(2)
         case KeyCodes.charC: shapePressed(3)
         case KeyCodes.escape: escapePressed()
+        case KeyCodes.slash where event.modifierFlags.contains(.option): optionSlashKeyboardKeyHandler.send(())
         case KeyCodes.slash: slashKeyboardKeyHandler.send(())
         default: break
         }

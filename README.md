@@ -21,6 +21,7 @@ C           Circle mode
 ⌘S          Save a screenshot to Finder
 ⌘Z          Undo
 /           Show or hide the startup message (persisted)
+⌥/          Show or hide the toolbar (persisted)
 ESC         Clear all drawings. Press again to hide Quick Draw
 ```
 

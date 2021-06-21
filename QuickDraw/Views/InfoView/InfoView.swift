@@ -51,6 +51,7 @@ class InfoView: NSVisualEffectView, Watcher {
         add(shortcutStyle(Copy("info.shortcut.numbers")), descriptionStyle(Copy("info.shortcut.numbers.info")))
         add(shortcutStyle(Copy("info.shortcut.letters")), descriptionStyle(Copy("info.shortcut.letters.info")))
         add(shortcutStyle(Copy("info.shortcut.slash")), descriptionStyle(Copy("info.shortcut.slash.info")))
+        add(shortcutStyle(Copy("info.shortcut.opt_slash")), descriptionStyle(Copy("info.shortcut.opt_slash.info")))
         add(shortcutStyle(Copy("info.shortcut.hide")), descriptionStyle(Copy("info.shortcut.hide.info")))
         add(shortcutStyle(Copy("info.shortcut.screenshot.clipboard")), descriptionStyle(Copy("info.shortcut.screenshot.clipboard.info")))
         let screenshotLabel = add(shortcutStyle(Copy("info.shortcut.screenshot")), screenshotDescription()).1

@@ -69,6 +69,11 @@ class DrawingView: NSView, Watcher {
         if Persistence.infoMessageHidden.value == true {
             infoView.isHidden = true
         }
+
+        if Persistence.lowerToolbarHidden.value == true {
+            colorsRadioGroup.isHidden = true
+            shapesRadioGroup.isHidden = true
+        }
     }
 
     private func createLayout() {
@@ -128,9 +133,15 @@ extension DrawingView {
         Persistence.infoMessageHidden.value = infoView.isHidden
     }
 
+    func keyboardPressedOptionSlash() {
+        colorsRadioGroup.isHidden = !colorsRadioGroup.isHidden
+        shapesRadioGroup.isHidden = !shapesRadioGroup.isHidden
+        Persistence.lowerToolbarHidden.value = shapesRadioGroup.isHidden
+    }
+
     func configure(forScreenshot isScreenshot: Bool) {
-        colorsRadioGroup.isHidden = isScreenshot
-        shapesRadioGroup.isHidden = isScreenshot
+        colorsRadioGroup.isHidden = isScreenshot || Persistence.lowerToolbarHidden.value == true
+        shapesRadioGroup.isHidden = isScreenshot || Persistence.lowerToolbarHidden.value == true
         brush.isHidden = isScreenshot
     }
 

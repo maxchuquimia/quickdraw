@@ -7,7 +7,9 @@
 "info.shortcut.letters" = "LARC";
 "info.shortcut.letters.info" = "Select Line, Arrow, Rectangle or Circle\nHold Shift while drawing for more";
 "info.shortcut.slash" = "/";
-"info.shortcut.slash.info" = "Toggle this message on launch";
+"info.shortcut.slash.info" = "Toggle this message (persisted)";
+"info.shortcut.opt_slash" = "⌥/";
+"info.shortcut.opt_slash.info" = "Toggle toolbar visibility (persisted)";
 "info.shortcut.hide" = "⌘H";
 "info.shortcut.hide.info" = "Hide Quick Draw";
 "info.shortcut.screenshot.clipboard" = "⌘C";
