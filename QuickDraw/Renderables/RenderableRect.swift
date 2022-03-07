@@ -12,7 +12,7 @@ import Cocoa
 final class RenderableRect: Renderable {
 
     var isHighlight: Bool = true
-    let origin: CGPoint
+    var origin: CGPoint
 
     override var actionName: String {
         Copy("renderable.type.rectangle")
@@ -28,6 +28,12 @@ final class RenderableRect: Renderable {
     override func mouseMoved(to point: CGPoint) {
         super.mouseMoved(to: point)
         path = NSBezierPath(roundedRect: NSRect.from(start: origin, diagonallyOpposite: point), xRadius: 2, yRadius: 2)
+    }
+
+    override func translate(by distance: CGPoint) {
+        super.translate(by: distance)
+        origin.x += distance.x
+        origin.y += distance.y
     }
 
 }

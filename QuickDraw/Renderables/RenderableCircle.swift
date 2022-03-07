@@ -10,7 +10,7 @@ import Cocoa
 
 final class RenderableCircle: Renderable {
 
-    private let center: CGPoint
+    private var center: CGPoint
 
     override var actionName: String {
         Copy("renderable.type.circle")
@@ -28,6 +28,12 @@ final class RenderableCircle: Renderable {
         let radius = Math.Line(from: center, to: point).length
         let circle = Math.Circle(center: center, radius: radius)
         path = NSBezierPath(ovalIn: circle.frame)
+    }
+
+    override func translate(by distance: CGPoint) {
+        super.translate(by: distance)
+        center.x += distance.x
+        center.y += distance.y
     }
 
 }

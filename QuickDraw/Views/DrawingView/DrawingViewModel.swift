@@ -21,6 +21,7 @@ final class DrawingViewModel: Watcher {
     let optionSlashKeyboardKeyHandler: Handler<Void> = .init()
     let isTracking: Watchable<Bool> = .init(false)
     let enableModification: Watchable<Bool> = .init(false)
+    var enableTranslation: Bool = false
     var selectedColor: NSColor = .white
     var selectedShape: Shape = .arrow
     var currentMouseLocation: CGPoint = .zero
@@ -46,10 +47,18 @@ final class DrawingViewModel: Watcher {
 
     func mouseDragged(with event: NSEvent) {
         guard let view = view else { return }
+        let previousLocation = currentMouseLocation
         currentMouseLocation = view.convert(event.locationInWindow, from: nil)
         guard isTracking.value else { return }
-        // Add a waypoint to the new path
-        drawings.value.last?.mouseMoved(to: currentMouseLocation)
+
+        if enableTranslation {
+            let delta = CGPoint(x: currentMouseLocation.x - previousLocation.x, y: currentMouseLocation.y - previousLocation.y)
+            drawings.value.last?.translate(by: delta)
+        } else {
+            // Add a waypoint to the new path
+            drawings.value.last?.mouseMoved(to: currentMouseLocation)
+        }
+
         drawings.value.last?.isModified = enableModification.value
         drawings.update()
     }
@@ -84,8 +93,16 @@ final class DrawingViewModel: Watcher {
         case KeyCodes.charC: shapePressed(3)
         case KeyCodes.escape: escapePressed()
         case KeyCodes.backspace: backspacePressed()
+        case KeyCodes.space: spacePressed(isPressed: true)
         case KeyCodes.slash where event.modifierFlags.contains(.option): optionSlashKeyboardKeyHandler.send(())
         case KeyCodes.slash: slashKeyboardKeyHandler.send(())
+        default: break
+        }
+    }
+
+    func keyUp(with event: NSEvent) {
+        switch Int(event.keyCode) {
+        case KeyCodes.space: spacePressed(isPressed: false)
         default: break
         }
     }
@@ -140,6 +157,10 @@ private extension DrawingViewModel {
             guard drawing.intersects(point: currentMouseLocation) else { continue }
             remove(drawing: drawing)
         }
+    }
+
+    func spacePressed(isPressed: Bool) {
+        enableTranslation = isPressed
     }
 
     func createNewPath(startingAt point: CGPoint) {

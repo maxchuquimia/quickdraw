@@ -52,6 +52,11 @@ class Renderable {
         didUpdateSinceLastRender = true
     }
 
+    func translate(by distance: CGPoint) {
+        path.transform(using: AffineTransform(translationByX: distance.x, byY: distance.y))
+        didUpdateSinceLastRender = true
+    }
+
     func pathToRender() -> NSBezierPath {
         path
     }

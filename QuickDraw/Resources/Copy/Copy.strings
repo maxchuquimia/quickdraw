@@ -5,9 +5,9 @@
 "info.shortcut.numbers" = "1 … 5";
 "info.shortcut.numbers.info" = "Select colours 1 to 5";
 "info.shortcut.letters" = "LARC";
-"info.shortcut.letters.info" = "Select Line, Arrow, Rectangle or Circle\nHold Shift while drawing for more";
+"info.shortcut.letters.info" = "Select Line, Arrow, Rectangle or Circle\nHold Space to move while drawing\nHold Shift while drawing for more";
 "info.shortcut.backspace" = "⌫";
-"info.shortcut.backspace.info" = "Backspace to delete all drawings below the mouse";
+"info.shortcut.backspace.info" = "Backspace to delete all drawings\nbelow the mouse";
 "info.shortcut.slash" = "/";
 "info.shortcut.slash.info" = "Toggle this message (persisted)";
 "info.shortcut.opt_slash" = "⌥/";
