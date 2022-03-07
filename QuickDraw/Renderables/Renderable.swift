@@ -55,4 +55,9 @@ class Renderable {
     func pathToRender() -> NSBezierPath {
         return path
     }
+
+    func intersects(point: CGPoint) -> Bool {
+        path.contains(point)
+    }
+
 }

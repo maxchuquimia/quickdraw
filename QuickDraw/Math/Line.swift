@@ -24,6 +24,10 @@ extension Math {
         var slope: CGFloat {
             return atan2(a.y - b.y, a.x - b.x)
         }
+
+        var midpoint: CGPoint {
+            CGPoint(x: (a.x - b.x) / 2, y: (a.y - b.y) / 2)
+        }
         
         func point(distanceFromA: CGFloat) -> CGPoint {
             

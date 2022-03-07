@@ -19,6 +19,7 @@ enum KeyCodes {
 
     static let escape = kVK_Escape
     static let slash = kVK_ANSI_Slash
+    static let backspace = kVK_Delete // The key above the backslash key
 
     static let charL = kVK_ANSI_L
     static let charA = kVK_ANSI_A
@@ -38,6 +39,7 @@ enum KeyCodes {
         KeyCodes.color5,
         KeyCodes.escape,
         KeyCodes.slash,
+        KeyCodes.backspace,
         KeyCodes.charL,
         KeyCodes.charA,
         KeyCodes.charR,

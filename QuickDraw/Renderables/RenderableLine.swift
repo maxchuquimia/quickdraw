@@ -114,4 +114,32 @@ class RenderableLine: Renderable {
             return super.pathToRender()
         }
     }
+
+    override func intersects(point: CGPoint) -> Bool {
+        var points = path.points
+        guard points.count >= 2 else { return false }
+        var tolerance = lineWidth
+
+        if isModified {
+            // Straight line mode, only use the first and last points
+            points = [points.first!, points.last!]
+            // Reduce the tolerance as the distance formula below behaves differently with points that are so far from eachother
+            tolerance = 0.1
+        }
+
+        for (ida, idb) in (0..<points.count - 1).map({ ($0, $0 + 1) }) {
+            let ida = points[ida]
+            let idb = points[idb]
+            let segmentLength = Math.Line(from: ida, to: idb).length
+            let partialLengthA = Math.Line(from: ida, to: point).length
+            let partialLengthB = Math.Line(from: idb, to: point).length
+            let computedLength = partialLengthA + partialLengthB
+            if computedLength >= (segmentLength - tolerance) && computedLength <= (segmentLength + tolerance)  {
+                return true
+            }
+        }
+
+        return false
+    }
+
 }

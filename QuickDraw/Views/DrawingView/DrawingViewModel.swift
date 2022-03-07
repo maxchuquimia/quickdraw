@@ -23,6 +23,7 @@ class DrawingViewModel: Watcher {
     let enableModification: Watchable<Bool> = .init(false)
     var selectedColor: NSColor = .white
     var selectedShape: Shape = .arrow
+    var currentMouseLocation: CGPoint = .zero
     var undoManager: UndoManager
     private let cache: Cache<NSScreen, [Renderable]>
     weak var view: DrawingView?
@@ -38,18 +39,17 @@ class DrawingViewModel: Watcher {
 
     func mouseDown(with event: NSEvent) {
         guard let view = view else { return }
+        currentMouseLocation = view.convert(event.locationInWindow, from: nil)
         isTracking.value = true
-        let location = view.convert(event.locationInWindow, from: nil)
-
-        createNewPath(startingAt: location)
+        createNewPath(startingAt: currentMouseLocation)
     }
 
     func mouseDragged(with event: NSEvent) {
         guard let view = view else { return }
+        currentMouseLocation = view.convert(event.locationInWindow, from: nil)
         guard isTracking.value else { return }
-        let location = view.convert(event.locationInWindow, from: nil)
         // Add a waypoint to the new path
-        drawings.value.last?.mouseMoved(to: location)
+        drawings.value.last?.mouseMoved(to: currentMouseLocation)
         drawings.value.last?.isModified = enableModification.value
         drawings.update()
     }
@@ -62,6 +62,11 @@ class DrawingViewModel: Watcher {
         if let count = drawings.value.last?.path.elementCount, count < 2 {
             undoManager.undo()
         }
+    }
+
+    func mouseMoved(with event: NSEvent) {
+        guard let view = view else { return }
+        currentMouseLocation = view.convert(event.locationInWindow, from: nil)
     }
 
     func keyDown(with event: NSEvent) {
@@ -78,6 +83,7 @@ class DrawingViewModel: Watcher {
         case KeyCodes.charR: shapePressed(2)
         case KeyCodes.charC: shapePressed(3)
         case KeyCodes.escape: escapePressed()
+        case KeyCodes.backspace: backspacePressed()
         case KeyCodes.slash where event.modifierFlags.contains(.option): optionSlashKeyboardKeyHandler.send(())
         case KeyCodes.slash: slashKeyboardKeyHandler.send(())
         default: break
@@ -126,6 +132,13 @@ private extension DrawingViewModel {
         } else {
             // Clear the drawings
             clearDrawings()
+        }
+    }
+
+    func backspacePressed() {
+        for drawing in drawings.value {
+            guard drawing.intersects(point: currentMouseLocation) else { continue }
+            remove(drawing: drawing)
         }
     }
 

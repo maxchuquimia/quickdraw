@@ -33,4 +33,5 @@ class RenderableRect: Renderable {
         super.mouseMoved(to: point)
         path = NSBezierPath(roundedRect: NSRect.from(start: origin, diagonallyOpposite: point), xRadius: 2, yRadius: 2)
     }
+
 }

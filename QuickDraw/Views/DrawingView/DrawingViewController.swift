@@ -65,6 +65,7 @@ class DrawingViewController: NSViewController, Watcher {
 
     override func mouseMoved(with event: NSEvent) {
         super.mouseMoved(with: event)
+        model.mouseMoved(with: event)
         canvas.updateBrush(for: event)
     }
 
