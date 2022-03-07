@@ -9,13 +9,13 @@
 import Foundation
 import Cocoa
 
-class RenderableRect: Renderable {
+final class RenderableRect: Renderable {
 
     var isHighlight: Bool = true
     let origin: CGPoint
 
     override var actionName: String {
-        return Copy("renderable.type.rectangle")
+        Copy("renderable.type.rectangle")
     }
 
     required init(origin: CGPoint) {
@@ -23,10 +23,6 @@ class RenderableRect: Renderable {
         super.init(path: NSBezierPath())
 
         lineWidth = 1
-    }
-
-    override func render() {
-        super.render()
     }
 
     override func mouseMoved(to point: CGPoint) {

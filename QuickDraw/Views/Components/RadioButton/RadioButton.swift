@@ -48,4 +48,5 @@ class RadioButton<Item>: NSButton {
     func styleHover() { die() }
 
     func styleSelected() { die() }
+
 }

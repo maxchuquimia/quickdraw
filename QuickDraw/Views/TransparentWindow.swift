@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class TransparentWindow: NSWindow, Watcher {
+final class TransparentWindow: NSWindow, Watcher {
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,4 +27,5 @@ class TransparentWindow: NSWindow, Watcher {
         guard let screen = NSScreen.main else { return }
         setFrame(screen.frame, display: true)
     }
+
 }

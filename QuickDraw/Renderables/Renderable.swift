@@ -24,7 +24,7 @@ class Renderable {
     /// If the receiver has recieved a `mouseMoved(to:)` call since the last time `render()` was called, this will be `true`
     private(set) var didUpdateSinceLastRender = false
 
-    var autoRespondsToFill: Bool { return true }
+    var autoRespondsToFill: Bool { true }
 
     init(path: NSBezierPath) {
         self.path = path
@@ -53,7 +53,7 @@ class Renderable {
     }
 
     func pathToRender() -> NSBezierPath {
-        return path
+        path
     }
 
     func intersects(point: CGPoint) -> Bool {

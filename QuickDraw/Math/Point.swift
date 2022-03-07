@@ -11,6 +11,7 @@ import Cocoa
 extension NSPoint {
 
     func offset(x: CGFloat = 0, y: CGFloat = 0) -> NSPoint {
-        return NSPoint(x: self.x + x, y: self.y + y)
+        NSPoint(x: self.x + x, y: self.y + y)
     }
+
 }

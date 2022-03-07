@@ -14,9 +14,11 @@ protocol AttributedStringGenerator {
 }
 
 extension AttributedStringGenerator {
+
     var attributes: [NSAttributedString.Key : Any] {
         return [:]
     }
+
 }
 
 func +(a: AttributedStringGenerator, b: AttributedStringGenerator) -> TextComposition {

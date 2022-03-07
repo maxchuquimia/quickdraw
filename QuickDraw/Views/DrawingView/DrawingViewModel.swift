@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class DrawingViewModel: Watcher {
+final class DrawingViewModel: Watcher {
 
     enum Shape {
         case arrow, line, rect, circle
@@ -166,6 +166,7 @@ private extension DrawingViewModel {
 
         append(drawing: shape)
     }
+
 }
 
 // Mark: - Bindings
@@ -195,6 +196,7 @@ private extension DrawingViewModel  {
             clearUndoHistory()
         }
     }
+
 }
 
 // MARK: - Drawing Actions & Undo / Redo
@@ -246,6 +248,7 @@ private extension DrawingViewModel {
     }
 
     var screenName: String {
-        return view?.window?.screen?.displayName ?? Copy("error.unknownScreenName")
+        view?.window?.screen?.displayName ?? Copy("error.unknownScreenName")
     }
+
 }

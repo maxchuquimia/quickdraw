@@ -9,7 +9,9 @@
 import Foundation
 
 extension NSEdgeInsets {
+
     static func allEdges(_ d: CGFloat) -> NSEdgeInsets {
         return NSEdgeInsets(top: d, left: d, bottom: d, right: d)
     }
+
 }

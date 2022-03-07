@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class RadioButtonGroup<Item, Button>: NSView where Button: RadioButton<Item> {
+final class RadioButtonGroup<Item, Button>: NSView where Button: RadioButton<Item> {
 
     let selectedItem: Watchable<Item>
 
@@ -95,4 +95,5 @@ class RadioButtonGroup<Item, Button>: NSView where Button: RadioButton<Item> {
             }
         })
     }
+
 }

@@ -15,7 +15,7 @@ extension Math {
         let radius: CGFloat
 
         func point(angle: CGFloat) -> CGPoint {
-            return CGPoint(
+            CGPoint(
                 x: (radius * sin(angle)) + center.x,
                 y: (radius * cos(angle)) + center.y
             )
@@ -33,7 +33,8 @@ extension Math {
         }
 
         var frame: CGRect {
-            return CGRect(x: center.x - radius, y: center.y - radius, width: radius * 2.0, height: radius * 2.0)
+            CGRect(x: center.x - radius, y: center.y - radius, width: radius * 2.0, height: radius * 2.0)
         }
     }
+
 }

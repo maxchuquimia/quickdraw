@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class RenderableLine: Renderable {
+final class RenderableLine: Renderable {
 
     enum Metrics {
         static let arrowRadius = 18.f
@@ -25,7 +25,7 @@ class RenderableLine: Renderable {
         }
     }
 
-    override var autoRespondsToFill: Bool { return false }
+    override var autoRespondsToFill: Bool { false }
 
     required init(origin: CGPoint, isArrow: Bool) {
         self.isArrow = isArrow
@@ -35,7 +35,6 @@ class RenderableLine: Renderable {
     }
 
     override func render() {
-
         defer {
             super.render()
             renderArrow()
@@ -102,7 +101,6 @@ class RenderableLine: Renderable {
     }
 
     override func pathToRender() -> NSBezierPath {
-
         if isModified {
             // Make this into a straight line using the first and last points
             guard let firstPoint = path.points.first, let lastPoint = path.points.last else { return super.pathToRender() }

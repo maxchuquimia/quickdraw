@@ -9,7 +9,7 @@
 import Cocoa
 
 @objc(CustomApplication)
-class CustomApplication: NSApplication {
+final class CustomApplication: NSApplication {
 
     override func sendEvent(_ event: NSEvent) {
 
@@ -25,4 +25,5 @@ class CustomApplication: NSApplication {
 
         super.sendEvent(event)
     }
+
 }

@@ -8,12 +8,12 @@
 
 import Cocoa
 
-class DrawingViewController: NSViewController, Watcher {
+final class DrawingViewController: NSViewController, Watcher {
 
     private let model = DrawingViewModel()
 
     var canvas: DrawingView {
-        return view as! DrawingView
+        view as! DrawingView
     }
 
     override func viewDidLoad() {
@@ -85,8 +85,9 @@ class DrawingViewController: NSViewController, Watcher {
     }
 
     override func performKeyEquivalent(with event: NSEvent) -> Bool {
-        return model.canHandle(key: event.keyCode)
+        model.canHandle(key: event.keyCode)
     }
+
 }
 
 // MARK: - Bindings

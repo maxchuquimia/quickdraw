@@ -13,9 +13,7 @@ func die(file: String = #file, function: String = #function, line: Int = #line) 
 }
 
 func Log(_ items: Any..., highlighted: Bool = false, file: String = #file) {
-
     let icon = highlighted ? "🔵" : "⚪️"
-
     print(items.reduce(icon + logPrefix(file: file), { $0 + " \($1)" }))
 }
 

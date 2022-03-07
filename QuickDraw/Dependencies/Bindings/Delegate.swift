@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Delegate<Arguments, ReturnValue> {
+final class Delegate<Arguments, ReturnValue> {
 
     typealias Closure = ((Arguments) throws -> ReturnValue)
 
@@ -24,4 +24,5 @@ class Delegate<Arguments, ReturnValue> {
         guard let returnValue = try? action(args) else { return defaultValue }
         return returnValue
     }
+
 }

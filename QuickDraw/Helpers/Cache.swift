@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Cache<Key: Hashable, Value> {
+final class Cache<Key: Hashable, Value> {
 
     private var data: [Key: Value] = [:]
 
@@ -20,4 +20,5 @@ class Cache<Key: Hashable, Value> {
             return data[key]
         }
     }
+
 }

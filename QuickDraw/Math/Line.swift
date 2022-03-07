@@ -7,7 +7,9 @@
 //
 
 import Foundation
+
 extension Math {
+
     struct Line {
         let a: CGPoint
         let b: CGPoint
@@ -18,11 +20,11 @@ extension Math {
         }
         
         var length: CGFloat {
-            return sqrt(pow(a.x - b.x, 2) + pow(a.y - b.y, 2))
+            sqrt(pow(a.x - b.x, 2) + pow(a.y - b.y, 2))
         }
         
         var slope: CGFloat {
-            return atan2(a.y - b.y, a.x - b.x)
+            atan2(a.y - b.y, a.x - b.x)
         }
 
         var midpoint: CGPoint {
@@ -30,7 +32,6 @@ extension Math {
         }
         
         func point(distanceFromA: CGFloat) -> CGPoint {
-            
             let circle = Circle(center: a, radius: distanceFromA)
             return circle.points(count: 1, offset:  slope).first!
         }
@@ -60,5 +61,7 @@ extension Math {
             
             return CGPoint(x: self.a.x + u * (self.b.x - self.a.x), y: self.a.y + u * (self.b.y - self.a.y))
         }
+
     }
+
 }

@@ -13,6 +13,7 @@ extension NSTextField {
     convenience init(label: AttributedStringGenerator) {
         self.init(labelWithAttributedString: label.attributedString)
     }
+
 }
 
 extension NSTextView {
@@ -28,9 +29,10 @@ extension NSTextView {
         linkTextAttributes?[.underlineStyle] = 1
 
     }
+
 }
 
-class LinkyTextView: NSTextView {
+final class LinkyTextView: NSTextView {
 
     let linkHandler: Handler<URL> = .init()
 
@@ -59,4 +61,5 @@ class LinkyTextView: NSTextView {
         guard let url = attributedString().attribute(.link, at: index, effectiveRange: nil) as? URL else { return }
         linkHandler.send(url)
     }
+
 }

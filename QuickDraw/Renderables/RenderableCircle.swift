@@ -8,12 +8,12 @@
 
 import Cocoa
 
-class RenderableCircle: Renderable {
+final class RenderableCircle: Renderable {
 
     private let center: CGPoint
 
     override var actionName: String {
-        return Copy("renderable.type.circle")
+        Copy("renderable.type.circle")
     }
 
     required init(center: CGPoint) {
@@ -29,4 +29,5 @@ class RenderableCircle: Renderable {
         let circle = Math.Circle(center: center, radius: radius)
         path = NSBezierPath(ovalIn: circle.frame)
     }
+
 }

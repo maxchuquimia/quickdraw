@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class InfoView: NSVisualEffectView, Watcher {
+final class InfoView: NSVisualEffectView, Watcher {
 
     enum Links: URL {
         typealias RawValue = URL
@@ -101,7 +101,6 @@ class InfoView: NSVisualEffectView, Watcher {
 
     @discardableResult
     private func add(_ shortcut: AttributedStringGenerator, _ info: AttributedStringGenerator, customSpace: CGFloat? = nil) -> (NSTextField, LinkyTextView) {
-
         let stack: NSStackView = create {
             $0.spacing = 0
             $0.alignment = .top
@@ -127,15 +126,15 @@ class InfoView: NSVisualEffectView, Watcher {
     }
 
     private func shortcutStyle(_ string: String) -> Text {
-        return Text(string).font(.light).color(.lightText)
+        Text(string).font(.light).color(.lightText)
     }
 
     private func descriptionStyle(_ string: String) -> Text {
-        return Text(string).font(.regular).color(.lightText)
+        Text(string).font(.regular).color(.lightText)
     }
 
     private func linkStyle(_ string: String, _ link: URL) -> Text {
-        return Text(string).font(.regular).color(.lightText).link(link)
+        Text(string).font(.regular).color(.lightText).link(link)
     }
 
     private func handle(link: URL) {
@@ -146,4 +145,5 @@ class InfoView: NSVisualEffectView, Watcher {
         case .github: NSWorkspace.shared.open(URL(string: "https://github.com/Jugale/quickdraw")!)
         }
     }
+
 }

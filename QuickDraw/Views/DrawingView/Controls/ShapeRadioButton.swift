@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class ShapeRadioButton: BaseRadioButton<DrawingViewModel.Shape> {
+final class ShapeRadioButton: BaseRadioButton<DrawingViewModel.Shape> {
 
     enum Metrics {
         static let imageInset = NSEdgeInsets.allEdges(8)
@@ -69,4 +69,5 @@ class ShapeRadioButton: BaseRadioButton<DrawingViewModel.Shape> {
             }
         }
     }
+
 }

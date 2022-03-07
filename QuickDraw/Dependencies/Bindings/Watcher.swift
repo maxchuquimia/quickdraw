@@ -58,6 +58,7 @@ extension Watcher where Self: AnyObject {
             return method(self)(t)
         })
     }
+
 }
 
 infix operator +=: AssignmentPrecedence
@@ -93,4 +94,5 @@ private extension Handler {
             }
         })
     }
+
 }

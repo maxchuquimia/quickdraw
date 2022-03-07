@@ -9,7 +9,7 @@
 import Cocoa
 
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate {
+final class AppDelegate: NSObject, NSApplicationDelegate {
 
     let notificationDelegate = NotificationDelegate()
 
@@ -41,5 +41,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBAction func helpPressed(_ sender: NSMenuItem) {
         NSWorkspace.shared.open(URL(string: "https://github.com/Jugale/quickdraw/issues")!)
     }
+
 }
 

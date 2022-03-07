@@ -18,4 +18,5 @@ extension NSTrackingArea {
         view.trackingAreas.forEach(view.removeTrackingArea(_:))
         view.addTrackingArea(standardTrackingArea(for: view))
     }
+
 }

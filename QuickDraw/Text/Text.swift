@@ -8,7 +8,8 @@
 
 import Cocoa
 
-class Text: AttributedStringGenerator {
+final class Text: AttributedStringGenerator {
+
     private(set) var _font: NSFont = .systemFont(ofSize: 12)
     private(set) var _color: NSColor = .black
     private(set) var _link: URL?
@@ -66,9 +67,10 @@ class Text: AttributedStringGenerator {
         _link = link
         return self
     }
+
 }
 
-class TextComposition: AttributedStringGenerator {
+final class TextComposition: AttributedStringGenerator {
 
     let attributedString: NSAttributedString
     let attributes: [NSAttributedString.Key : Any]
@@ -79,4 +81,5 @@ class TextComposition: AttributedStringGenerator {
         self.attributedString = s.copy() as! NSAttributedString
         self.attributes = attributes
     }
+
 }

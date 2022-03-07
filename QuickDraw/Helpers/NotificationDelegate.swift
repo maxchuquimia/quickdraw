@@ -8,7 +8,7 @@
 
 import Foundation
 
-class NotificationDelegate: NSObject, NSUserNotificationCenterDelegate {
+final class NotificationDelegate: NSObject, NSUserNotificationCenterDelegate {
 
     enum Identifier: String {
         case screenshotSuccess = "DBAAD179-35A3-4C42-A424-65A8DBFCD413"
@@ -20,7 +20,6 @@ class NotificationDelegate: NSObject, NSUserNotificationCenterDelegate {
     }
 
     func userNotificationCenter(_ center: NSUserNotificationCenter, didActivate notification: NSUserNotification) {
-        
         guard let id = Identifier(rawValue: notification.identifier ?? "") else { return }
 
         switch id {
@@ -28,4 +27,5 @@ class NotificationDelegate: NSObject, NSUserNotificationCenterDelegate {
         default: break
         }
     }
+
 }

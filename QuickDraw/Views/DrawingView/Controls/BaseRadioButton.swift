@@ -43,4 +43,5 @@ class BaseRadioButton<Item>: RadioButton<Item> {
         needsDisplay = true
         alphaValue = 1.0
     }
+
 }

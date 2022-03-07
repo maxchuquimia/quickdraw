@@ -15,4 +15,5 @@ extension NSFont {
     static let light = NSFont.systemFont(ofSize: 18, weight: .light)
     static let regular = NSFont.systemFont(ofSize: 18, weight: .regular)
     static let small = NSFont.systemFont(ofSize: 14, weight: .regular)
+
 }

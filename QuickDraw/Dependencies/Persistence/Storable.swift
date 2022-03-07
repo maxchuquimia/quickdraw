@@ -98,4 +98,5 @@ struct Storable<Object>: ExpressibleByStringLiteral, StringLiteralBoilerplate wh
             return Object.from(primitive: p)
         }
     }
+
 }

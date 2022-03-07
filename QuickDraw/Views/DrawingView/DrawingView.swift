@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class DrawingView: NSView, Watcher {
+final class DrawingView: NSView, Watcher {
 
     private enum Metrics {
         static let defaultSpacing: CGFloat = 30.0
@@ -109,6 +109,7 @@ class DrawingView: NSView, Watcher {
     override func performKeyEquivalent(with event: NSEvent) -> Bool {
         return keyEquivalentHandler.execute(event)
     }
+
 }
 
 // MARK: - Bindings
@@ -161,6 +162,7 @@ extension DrawingView {
     func set(modified: Bool) {
         shapesRadioGroup.buttons.forEach({ $0.modified = modified })
     }
+
 }
 
 // MARK: - Public
@@ -170,4 +172,5 @@ extension DrawingView {
         let location = event.locationInWindow.offset(x: -brush.frame.width / 2, y: -brush.frame.width / 2)
         brush.setFrameOrigin(location)
     }
+
 }

@@ -40,4 +40,5 @@ extension NSBezierPath {
 
         return output
     }
+
 }

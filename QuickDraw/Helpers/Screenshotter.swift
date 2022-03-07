@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class Screenshotter: Watcher {
+final class Screenshotter: Watcher {
 
     static let shared = Screenshotter()
     private(set) var lastScreenshotLocation: URL?
@@ -177,4 +177,5 @@ class Screenshotter: Watcher {
             return nil
         }
     }
+
 }

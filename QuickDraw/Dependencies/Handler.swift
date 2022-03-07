@@ -45,10 +45,13 @@ class Handler<T> {
         // Notify watchers
         self.watchers.forEach({ $0.val(value) })
     }
+
 }
 
 extension Handler where T == Void {
+
     func send() {
         send(())
     }
+
 }

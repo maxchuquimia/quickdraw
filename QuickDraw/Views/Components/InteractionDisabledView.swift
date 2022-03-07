@@ -8,6 +8,8 @@
 
 import Cocoa
 
-class InteractionDisabledView: NSView {
+final class InteractionDisabledView: NSView {
+
     override func hitTest(_ point: NSPoint) -> NSView? { return  nil }
+
 }

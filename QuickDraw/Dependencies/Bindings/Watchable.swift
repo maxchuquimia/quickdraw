@@ -41,5 +41,5 @@ final class Watchable<T>: Handler<T>  {
     func update() {
         notifyWatchers()
     }
-}
 
+}

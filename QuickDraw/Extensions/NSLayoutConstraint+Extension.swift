@@ -22,6 +22,7 @@ extension NSView {
             bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: -insets.bottom),
         ]
     }
+
 }
 
 extension NSLayoutConstraint {
@@ -33,4 +34,5 @@ extension NSLayoutConstraint {
     static func activate(_ constraints: [NSLayoutConstraint]...) {
         NSLayoutConstraint.activate(constraints.flatMap({ $0 }))
     }
+
 }

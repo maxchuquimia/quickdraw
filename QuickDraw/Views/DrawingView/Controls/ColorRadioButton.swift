@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class ColorRadioButton: BaseRadioButton<NSColor> {
+final class ColorRadioButton: BaseRadioButton<NSColor> {
 
     override func setup() {
         super.setup()
@@ -24,4 +24,5 @@ class ColorRadioButton: BaseRadioButton<NSColor> {
         super.styleSelected()
         layer?.backgroundColor = representedItem.cgColor
     }
+
 }

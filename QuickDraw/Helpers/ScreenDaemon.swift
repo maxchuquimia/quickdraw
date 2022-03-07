@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class ScreenDaemon {
+final class ScreenDaemon {
 
     static let shared = ScreenDaemon()
 
@@ -44,6 +44,7 @@ class ScreenDaemon {
     }
 
     private func getScreenWithMouse() -> NSScreen? {
-        return NSScreen.screens.first { NSMouseInRect(NSEvent.mouseLocation, $0.frame, false) }
+        NSScreen.screens.first { NSMouseInRect(NSEvent.mouseLocation, $0.frame, false) }
     }
+
 }
