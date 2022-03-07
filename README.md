@@ -20,6 +20,7 @@ C           Circle mode
 ⌘C          Copy screenshot to Clipboard (permissions may be requested the first time)
 ⌘S          Save a screenshot to Finder
 ⌘Z          Undo
+Space       Hold whilst drawing to adjust object position
 ⌫           Backspace to delete all drawings below the mouse
 /           Show or hide the startup message (persisted)
 ⌥/          Show or hide the toolbar (persisted)
