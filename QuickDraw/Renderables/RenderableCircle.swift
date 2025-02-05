@@ -12,6 +12,10 @@ final class RenderableCircle: Renderable {
 
     private var center: CGPoint
 
+    override var fillColorAlpha: CGFloat {
+        isModified ? 1.0 : 0.0
+    }
+
     override var actionName: String {
         Copy("renderable.type.circle")
     }

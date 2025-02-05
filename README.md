@@ -15,8 +15,8 @@ Key/s       Function
 12345       Select colours 1 to 5
 L           Line mode - hold Shift while drawing for straight lines
 A           Arrow mode - hold Shift while drawing for straight arrows
-R           Rectangle mode
-C           Circle mode
+R           Rectangle mode - hold Shift while drawing to fill
+C           Circle mode - hold Shift while drawing to fill
 ⌘C          Copy screenshot to Clipboard (permissions may be requested the first time)
 ⌘S          Save a screenshot to Finder
 ⌘Z          Undo

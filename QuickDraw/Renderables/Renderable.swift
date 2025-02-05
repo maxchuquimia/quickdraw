@@ -26,6 +26,8 @@ class Renderable {
 
     var autoRespondsToFill: Bool { true }
 
+    var fillColorAlpha: CGFloat { 0.2 }
+
     init(path: NSBezierPath) {
         self.path = path
     }
@@ -33,7 +35,7 @@ class Renderable {
     func render() {
         let path = pathToRender()
 
-        fillColor?.setFill()
+        fillColor?.withAlphaComponent(fillColorAlpha).setFill()
         strokeColor?.setStroke()
 
         if fillColor != nil, autoRespondsToFill {

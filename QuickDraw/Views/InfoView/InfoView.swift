@@ -40,7 +40,7 @@ final class InfoView: NSVisualEffectView, Watcher {
         addText()
 
         NSLayoutConstraint.activate(
-            widthAnchor.constraint(equalToConstant: 500)
+            widthAnchor.constraint(equalToConstant: 540)
         )
     }
 
@@ -114,7 +114,7 @@ final class InfoView: NSVisualEffectView, Watcher {
         let infoLabel = LinkyTextView(label: info)
         infoLabel.linkHandler += weak(Function.handle(link:))
         stack.addArrangedSubview(infoLabel)
-        infoLabel.widthAnchor.constraint(equalToConstant: 320).isActive = true
+        infoLabel.widthAnchor.constraint(equalToConstant: 360).isActive = true
 
         mainStack.addArrangedSubview(stack)
 

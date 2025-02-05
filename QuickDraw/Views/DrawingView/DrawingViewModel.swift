@@ -61,7 +61,7 @@ final class DrawingViewModel: Watcher {
             drawings.value.last?.mouseMoved(to: currentMouseLocation)
         }
 
-        drawings.value.last?.isModified = enableModification.value
+        updateLastDrawingModifiedIfTracking()
         drawings.update()
     }
 
@@ -111,6 +111,18 @@ final class DrawingViewModel: Watcher {
 
     func flagsChanged(with event: NSEvent) {
         enableModification.value = event.modifierFlags.contains(.shift)
+        let didUpdate = updateLastDrawingModifiedIfTracking()
+
+        if didUpdate {
+            drawings.update()
+        }
+    }
+
+    @discardableResult
+    func updateLastDrawingModifiedIfTracking() -> Bool {
+        guard isTracking.value else { return false }
+        drawings.value.last?.isModified = enableModification.value
+        return true
     }
 
     func canHandle(key code: UInt16) -> Bool {
@@ -180,11 +192,11 @@ private extension DrawingViewModel {
         case .rect:
             shape = RenderableRect(origin: point)
             shape.strokeColor = selectedColor
-            shape.fillColor = selectedColor.withAlphaComponent(0.2)
+            shape.fillColor = selectedColor
         case .circle:
             shape = RenderableCircle(center: point)
             shape.strokeColor = selectedColor
-            shape.fillColor = nil
+            shape.fillColor = selectedColor
         }
 
         append(drawing: shape)

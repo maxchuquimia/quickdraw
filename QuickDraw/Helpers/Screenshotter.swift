@@ -127,8 +127,10 @@ final class Screenshotter: Watcher {
     }
 
     private func playSound() {
-        // I found this by running `sudo opensnoop | grep aif` and taking a screenshot 😉
-        NSSound(named: "shutter")?.play()
+        DispatchQueue(label: "screenshot", qos: .utility).async {
+            // I found this by running `sudo opensnoop | grep aif` and taking a screenshot 😉
+            NSSound(named: "shutter")?.play()
+        }
     }
 
     private func screenshotPressed() {

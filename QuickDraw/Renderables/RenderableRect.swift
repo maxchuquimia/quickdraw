@@ -14,6 +14,10 @@ final class RenderableRect: Renderable {
     var isHighlight: Bool = true
     var origin: CGPoint
 
+    override var fillColorAlpha: CGFloat {
+        isModified ? 1.0 : super.fillColorAlpha
+    }
+
     override var actionName: String {
         Copy("renderable.type.rectangle")
     }

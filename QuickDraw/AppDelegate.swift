@@ -39,7 +39,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     @IBAction func helpPressed(_ sender: NSMenuItem) {
-        NSWorkspace.shared.open(URL(string: "https://github.com/Jugale/quickdraw/issues")!)
+        NSWorkspace.shared.open(URL(string: "https://github.com/maxchuquimia/quickdraw/issues")!)
     }
 
     @IBAction func showShortcutsPressed(_ sender: NSMenuItem) {

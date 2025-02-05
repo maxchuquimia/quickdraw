@@ -27,6 +27,10 @@ final class RenderableLine: Renderable {
 
     override var autoRespondsToFill: Bool { false }
 
+    override var fillColorAlpha: CGFloat {
+        isArrow ? 1.0 : super.fillColorAlpha
+    }
+
     required init(origin: CGPoint, isArrow: Bool) {
         self.isArrow = isArrow
         let newPath = NSBezierPath()

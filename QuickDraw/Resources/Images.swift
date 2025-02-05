@@ -16,6 +16,8 @@ enum Image {
         static let lineModified = #imageLiteral(resourceName: "iconLineModified")
         static let arrowModified = #imageLiteral(resourceName: "iconArrowModified")
         static let rectangle = #imageLiteral(resourceName: "iconRectangle")
+        static let rectangleModified = #imageLiteral(resourceName: "iconRectangleModified")
         static let circle = #imageLiteral(resourceName: "iconCircle")
+        static let circleModified = #imageLiteral(resourceName: "iconCircleModified")
     }
 }

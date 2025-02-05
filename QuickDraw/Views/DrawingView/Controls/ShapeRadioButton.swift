@@ -52,20 +52,19 @@ final class ShapeRadioButton: BaseRadioButton<DrawingViewModel.Shape> {
     }
 
     func updateIcon() {
-
         if modified {
             switch representedItem {
-                case .arrow: imageView.image = Image.Shape.arrowModified
-                case .line: imageView.image = Image.Shape.lineModified
-                case .rect: imageView.image = Image.Shape.rectangle
-                case .circle: imageView.image = Image.Shape.circle
+            case .arrow: imageView.image = Image.Shape.arrowModified
+            case .line: imageView.image = Image.Shape.lineModified
+            case .rect: imageView.image = Image.Shape.rectangleModified
+            case .circle: imageView.image = Image.Shape.circleModified
             }
         } else {
             switch representedItem {
-                case .arrow: imageView.image = Image.Shape.arrow
-                case .line: imageView.image = Image.Shape.line
-                case .rect: imageView.image = Image.Shape.rectangle
-                case .circle: imageView.image = Image.Shape.circle
+            case .arrow: imageView.image = Image.Shape.arrow
+            case .line: imageView.image = Image.Shape.line
+            case .rect: imageView.image = Image.Shape.rectangle
+            case .circle: imageView.image = Image.Shape.circle
             }
         }
     }
