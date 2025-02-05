@@ -32,6 +32,7 @@ final class DrawingViewController: NSViewController, Watcher {
         model.optionSlashKeyboardKeyHandler += canvas.weak(DrawingView.keyboardPressedOptionSlash)
         model.enableModification += canvas.weak(DrawingView.set(modified:))
         model.isTracking += canvas.weak(DrawingView.model(isTracking:))
+        model.showShortcutsNotificationHandler += canvas.weak(DrawingView.showShortcutsAndButtons)
         Screenshotter.shared.configureForScreenshotHandler += canvas.weak(DrawingView.configure(forScreenshot:))
 
         model.view = canvas

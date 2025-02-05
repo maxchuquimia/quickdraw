@@ -140,6 +140,15 @@ extension DrawingView {
         Persistence.lowerToolbarHidden.value = shapesRadioGroup.isHidden
     }
 
+    func showShortcutsAndButtons() {
+        infoView.isHidden = false
+        Persistence.infoMessageHidden.value = false
+
+        colorsRadioGroup.isHidden = false
+        shapesRadioGroup.isHidden = false
+        Persistence.lowerToolbarHidden.value = false
+    }
+
     func configure(forScreenshot isScreenshot: Bool) {
         colorsRadioGroup.isHidden = isScreenshot || Persistence.lowerToolbarHidden.value == true
         shapesRadioGroup.isHidden = isScreenshot || Persistence.lowerToolbarHidden.value == true

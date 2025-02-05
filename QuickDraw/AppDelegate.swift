@@ -42,5 +42,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         NSWorkspace.shared.open(URL(string: "https://github.com/Jugale/quickdraw/issues")!)
     }
 
+    @IBAction func showShortcutsPressed(_ sender: NSMenuItem) {
+        NotificationCenter.showShortcutsButtonPressed.send()
+    }
+
 }
 

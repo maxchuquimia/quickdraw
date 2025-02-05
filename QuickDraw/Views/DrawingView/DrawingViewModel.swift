@@ -19,6 +19,7 @@ final class DrawingViewModel: Watcher {
     let shapeKeyboardKeyHandler: Handler<Int> = .init()
     let slashKeyboardKeyHandler: Handler<Void> = .init()
     let optionSlashKeyboardKeyHandler: Handler<Void> = .init()
+    let showShortcutsNotificationHandler: Handler<Void> = .init()
     let isTracking: Watchable<Bool> = .init(false)
     let enableModification: Watchable<Bool> = .init(false)
     var enableTranslation: Bool = false
@@ -35,6 +36,7 @@ final class DrawingViewModel: Watcher {
 
         NotificationCenter.saveButtonPressed += weak(Function.screenshotRequested)
         NotificationCenter.copyButtonPressed += weak(Function.copyScreenshotRequested)
+        NotificationCenter.showShortcutsButtonPressed += weak(Function.showShortcutsRequested)
         ScreenDaemon.shared.screenChanged += weak(Function.screenChanged(screens:))
     }
 
@@ -201,6 +203,10 @@ private extension DrawingViewModel  {
     func copyScreenshotRequested() {
         guard let screen = view?.window?.screen else { return }
         Screenshotter.shared.captureToClipboard(screen: screen)
+    }
+
+    func showShortcutsRequested() {
+        showShortcutsNotificationHandler.send()
     }
 
     func screenChanged(screens: (old: NSScreen?, new: NSScreen?)) {
