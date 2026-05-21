@@ -1,6 +1,8 @@
+<img src="https://raw.githubusercontent.com/maxchuquimia/quickdraw/master/AppStore/icon.png" width="150" title="quickdraw app icon">
+
 # Quick Draw
 
-![screenshot](https://raw.githubusercontent.com/Jugale/quickdraw/master/AppStore/Screenshot%201.png)
+![screenshot](https://raw.githubusercontent.com/maxchuquimia/quickdraw/master/AppStore/Screenshot%201-highres.jpg)
 
 Do you need a quick, easy and unobtrusive way to highlight content while screencasting?
 Rather than circling your mouse around wildly, try QuickDraw!
@@ -27,10 +29,16 @@ Space       Hold whilst drawing to adjust object position
 ESC         Clear all drawings. Press again to hide Quick Draw
 ```
 
+### Installation
+
+You can clone this repo and build Quick Draw yourself, or you download the latest version and support further development with a one-time purchase on the Mac App Store: https://apps.apple.com/us/app/quick-draw/id1459010006
+
 ## Motivation
-1. I  mentor an online Swift course and would like a quick, easy and unobtrusive way to highlight and describe code during video calls
-2. I would like to increase my experience in macOS development (I am an iOS developer)
-3. I would like to experiment with creating a simple architecture that has no third party dependencies
+
+Many years ago, I used to mentor an online Swift course and wanted a quick, easy and unobtrusive way to highlight and describe code during video calls. 
+
+I continue to use Quick Draw today to pre-annotate my screen before taking a screenshot instead of the extra steps required when annotating an image that already exists.
 
 ## Found a bug?
+
 Feel free to create an issue, or fix it yourself - pull requests are welcome!

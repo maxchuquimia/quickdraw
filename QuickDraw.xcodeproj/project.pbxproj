@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 90;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		51049EB62FBEB27E00D760F9 /* quickdraw.icon in Resources */ = {isa = PBXBuildFile; fileRef = 51049EB52FBEB27E00D760F9 /* quickdraw.icon */; };
 		5501899D2234E062000E4EC1 /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5501899C2234E062000E4EC1 /* Circle.swift */; };
 		550189A12234E2FA000E4EC1 /* NSBezierPath+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550189A02234E2FA000E4EC1 /* NSBezierPath+Extension.swift */; };
 		550189A32235C4D4000E4EC1 /* RenderableRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550189A22235C4D4000E4EC1 /* RenderableRect.swift */; };
@@ -68,6 +69,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		51049EB52FBEB27E00D760F9 /* quickdraw.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = quickdraw.icon; sourceTree = "<group>"; };
 		5501899C2234E062000E4EC1 /* Circle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
 		550189A02234E2FA000E4EC1 /* NSBezierPath+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSBezierPath+Extension.swift"; sourceTree = "<group>"; };
 		550189A22235C4D4000E4EC1 /* RenderableRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderableRect.swift; sourceTree = "<group>"; };
@@ -135,10 +137,8 @@
 /* Begin PBXFrameworksBuildPhase section */
 		55E785DF222DE90D00A91D79 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
@@ -146,6 +146,7 @@
 		5501899A2234DD57000E4EC1 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				51049EB52FBEB27E00D760F9 /* quickdraw.icon */,
 				55B94ED22237563100024616 /* Copy */,
 				55E785E9222DE90F00A91D79 /* Assets.xcassets */,
 				554829E0224F222800AA1AB5 /* Colors.xcassets */,
@@ -376,8 +377,6 @@
 			);
 			buildRules = (
 			);
-			dependencies = (
-			);
 			name = QuickDraw;
 			productName = QuickDraw;
 			productReference = 55E785E2222DE90D00A91D79 /* QuickDraw.app */;
@@ -404,7 +403,6 @@
 				};
 			};
 			buildConfigurationList = 55E785DD222DE90D00A91D79 /* Build configuration list for PBXProject "QuickDraw" */;
-			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -412,6 +410,7 @@
 				Base,
 			);
 			mainGroup = 55E785D9222DE90D00A91D79;
+			preferredProjectObjectVersion = 90;
 			productRefGroup = 55E785E3222DE90D00A91D79 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -424,22 +423,20 @@
 /* Begin PBXResourcesBuildPhase section */
 		55E785E0222DE90D00A91D79 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				5536EDF2225C1A2100D3D2D9 /* shutter.aif in Resources */,
 				55B94ED62237573200024616 /* Copy.strings in Resources */,
 				554829E1224F222800AA1AB5 /* Colors.xcassets in Resources */,
 				55E785EA222DE90F00A91D79 /* Assets.xcassets in Resources */,
+				51049EB62FBEB27E00D760F9 /* quickdraw.icon in Resources */,
 				55E785ED222DE90F00A91D79 /* Main.storyboard in Resources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		55E785DE222DE90D00A91D79 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				55E78611222E4B9900A91D79 /* RenderableLine.swift in Sources */,
 				55F110E6224C899400D03388 /* BaseRadioButton.swift in Sources */,
@@ -495,7 +492,6 @@
 				55E785E6222DE90D00A91D79 /* AppDelegate.swift in Sources */,
 				55F110E4224C88FF00D03388 /* ShapeRadioButton.swift in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
@@ -511,7 +507,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		55E785F0222DE90F00A91D79 /* Debug */ = {
+		55E785F0222DE90F00A91D79 /* Debug configuration for PBXProject "QuickDraw" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -572,7 +568,7 @@
 			};
 			name = Debug;
 		};
-		55E785F1222DE90F00A91D79 /* Release */ = {
+		55E785F1222DE90F00A91D79 /* Release configuration for PBXProject "QuickDraw" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -626,22 +622,23 @@
 			};
 			name = Release;
 		};
-		55E785F3222DE90F00A91D79 /* Debug */ = {
+		55E785F3222DE90F00A91D79 /* Debug configuration for PBXNativeTarget "QuickDraw" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = quickdraw;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = QuickDraw/QuickDraw.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = D3NCG82LUC;
 				INFOPLIST_FILE = "$(SRCROOT)/QuickDraw/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.4.1;
+				MARKETING_VERSION = 1.4.2;
 				OTHER_SWIFT_FLAGS = "-DDEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.chuquimianproductions.QuickDraw;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -649,22 +646,23 @@
 			};
 			name = Debug;
 		};
-		55E785F4222DE90F00A91D79 /* Release */ = {
+		55E785F4222DE90F00A91D79 /* Release configuration for PBXNativeTarget "QuickDraw" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = quickdraw;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = QuickDraw/QuickDraw.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = D3NCG82LUC;
 				INFOPLIST_FILE = "$(SRCROOT)/QuickDraw/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.4.1;
+				MARKETING_VERSION = 1.4.2;
 				OTHER_SWIFT_FLAGS = "-DRELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.chuquimianproductions.QuickDraw;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -678,19 +676,17 @@
 		55E785DD222DE90D00A91D79 /* Build configuration list for PBXProject "QuickDraw" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				55E785F0222DE90F00A91D79 /* Debug */,
-				55E785F1222DE90F00A91D79 /* Release */,
+				55E785F0222DE90F00A91D79 /* Debug configuration for PBXProject "QuickDraw" */,
+				55E785F1222DE90F00A91D79 /* Release configuration for PBXProject "QuickDraw" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		55E785F2222DE90F00A91D79 /* Build configuration list for PBXNativeTarget "QuickDraw" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				55E785F3222DE90F00A91D79 /* Debug */,
-				55E785F4222DE90F00A91D79 /* Release */,
+				55E785F3222DE90F00A91D79 /* Debug configuration for PBXNativeTarget "QuickDraw" */,
+				55E785F4222DE90F00A91D79 /* Release configuration for PBXNativeTarget "QuickDraw" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
