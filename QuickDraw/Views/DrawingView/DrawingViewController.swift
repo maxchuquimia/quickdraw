@@ -34,6 +34,7 @@ final class DrawingViewController: NSViewController, Watcher {
         model.isTracking += canvas.weak(DrawingView.model(isTracking:))
         model.showShortcutsNotificationHandler += canvas.weak(DrawingView.showShortcutsAndButtons)
         Screenshotter.shared.configureForScreenshotHandler += canvas.weak(DrawingView.configure(forScreenshot:))
+        ScreenDaemon.shared.nativeScreenshotToolVisible += canvas.weak(DrawingView.set(nativeScreenshotToolVisible:))
 
         model.view = canvas
 
@@ -91,7 +92,7 @@ final class DrawingViewController: NSViewController, Watcher {
     }
 
     override func performKeyEquivalent(with event: NSEvent) -> Bool {
-        model.canHandle(key: event.keyCode)
+        model.canHandle(key: event)
     }
 
 }

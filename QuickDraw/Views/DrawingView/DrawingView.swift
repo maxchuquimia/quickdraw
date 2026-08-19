@@ -31,6 +31,7 @@ final class DrawingView: NSView, Watcher {
         ShapeRadioButton(item: .arrow),
         ShapeRadioButton(item: .rect),
         ShapeRadioButton(item: .circle),
+        ShapeRadioButton(item: .text, title: "T"),
     ])
 
     private var colorsRadioGroupBottom: NSLayoutConstraint?
@@ -116,7 +117,11 @@ final class DrawingView: NSView, Watcher {
 extension DrawingView {
 
     func redraw(renderables: [Renderable]) {
+        // Renderables with the same zIndex stay in the order they were drawn
         drawings = renderables
+            .enumerated()
+            .sorted { ($0.element.zIndex, $0.offset) < ($1.element.zIndex, $1.offset) }
+            .map(\.element)
         needsDisplay = true
     }
 
@@ -147,6 +152,10 @@ extension DrawingView {
         colorsRadioGroup.isHidden = false
         shapesRadioGroup.isHidden = false
         Persistence.lowerToolbarHidden.value = false
+    }
+
+    func set(nativeScreenshotToolVisible: Bool) {
+        brush.isHidden = nativeScreenshotToolVisible
     }
 
     func configure(forScreenshot isScreenshot: Bool) {

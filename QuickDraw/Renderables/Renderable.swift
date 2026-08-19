@@ -26,6 +26,8 @@ class Renderable {
 
     var autoRespondsToFill: Bool { true }
 
+    var zIndex: Int { 0 }
+
     var fillColorAlpha: CGFloat { 0.2 }
 
     init(path: NSBezierPath) {

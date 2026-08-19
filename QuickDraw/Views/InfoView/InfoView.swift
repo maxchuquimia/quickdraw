@@ -142,7 +142,7 @@ final class InfoView: NSVisualEffectView, Watcher {
 
         switch linkType {
         case .saveLocation: Screenshotter.shared.showLocationPicker()
-        case .github: NSWorkspace.shared.open(URL(string: "https://github.com/Jugale/quickdraw")!)
+        case .github: NSWorkspace.shared.open(URL(string: "https://github.com/maxchuquimia/quickdraw")!)
         }
     }
 

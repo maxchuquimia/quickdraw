@@ -4,8 +4,8 @@
 "info.shortcut.esc.info" = "Clear all drawings\nPress while clear to hide Quick Draw";
 "info.shortcut.numbers" = "1 … 5";
 "info.shortcut.numbers.info" = "Select colours 1 to 5";
-"info.shortcut.letters" = "LARC";
-"info.shortcut.letters.info" = "Select Line, Arrow, Rectangle or Circle\n• Hold Space to move while drawing\n• Hold Shift for straight lines & filled shapes";
+"info.shortcut.letters" = "LARCT";
+"info.shortcut.letters.info" = "Select Line, Arrow, Rectangle, Circle or Text\n• Hold Space to move while drawing\n• Hold Shift for straight lines & filled shapes";
 "info.shortcut.backspace" = "⌫";
 "info.shortcut.backspace.info" = "Backspace to delete all drawings\nbelow the mouse";
 "info.shortcut.slash" = "/";
@@ -29,6 +29,8 @@
 "renderable.type.arrow" = "Arrow";
 "renderable.type.rectangle" = "Rectangle";
 "renderable.type.circle" = "Circle";
+"renderable.type.text" = "Text";
+"renderable.text.placeholder" = "Font Size %@";
 
 "screenshot.notification.title" = "Quick Draw";
 "screenshot.notification.success" = "Screenshot saved to %@";

@@ -11,7 +11,7 @@ import Cocoa
 final class DrawingViewModel: Watcher {
 
     enum Shape {
-        case arrow, line, rect, circle
+        case arrow, line, rect, circle, text
     }
 
     let drawings: Watchable<[Renderable]> = .init([])
@@ -27,6 +27,9 @@ final class DrawingViewModel: Watcher {
     var selectedShape: Shape = .arrow
     var currentMouseLocation: CGPoint = .zero
     var undoManager: UndoManager
+    private(set) var editingText: RenderableText?
+    private var cursorTimer: Timer?
+    private var isCapturing = false
     private let cache: Cache<NSScreen, [Renderable]>
     weak var view: DrawingView?
 
@@ -38,10 +41,13 @@ final class DrawingViewModel: Watcher {
         NotificationCenter.copyButtonPressed += weak(Function.copyScreenshotRequested)
         NotificationCenter.showShortcutsButtonPressed += weak(Function.showShortcutsRequested)
         ScreenDaemon.shared.screenChanged += weak(Function.screenChanged(screens:))
+        ScreenDaemon.shared.nativeScreenshotToolVisible += weak(Function.hideCursor(while:))
+        Screenshotter.shared.configureForScreenshotHandler += weak(Function.hideCursor(while:))
     }
 
     func mouseDown(with event: NSEvent) {
         guard let view = view else { return }
+        endEditingText()
         currentMouseLocation = view.convert(event.locationInWindow, from: nil)
         isTracking.value = true
         createNewPath(startingAt: currentMouseLocation)
@@ -68,6 +74,11 @@ final class DrawingViewModel: Watcher {
     func mouseUp(with event: NSEvent) {
         isTracking.value = false
 
+        if let text = drawings.value.last as? RenderableText {
+            beginEditing(text: text)
+            return
+        }
+
         // If the last item was tiny, just undo drawing it.
         // This stops random clicks from appearing in the Undo stack
         if let count = drawings.value.last?.path.elementCount, count < 2 {
@@ -81,6 +92,17 @@ final class DrawingViewModel: Watcher {
     }
 
     func keyDown(with event: NSEvent) {
+        if let text = editingText {
+            switch Int(event.keyCode) {
+            case KeyCodes.escape: endEditingText()
+            case KeyCodes.backspace: text.deleteBackwards()
+            default: text.insert(event.characters ?? "")
+            }
+
+            drawings.update()
+            return
+        }
+
         guard !event.isARepeat else { return }
 
         switch Int(event.keyCode) {
@@ -93,6 +115,7 @@ final class DrawingViewModel: Watcher {
         case KeyCodes.charA: shapePressed(1)
         case KeyCodes.charR: shapePressed(2)
         case KeyCodes.charC: shapePressed(3)
+        case KeyCodes.charT: shapePressed(4)
         case KeyCodes.escape: escapePressed()
         case KeyCodes.backspace: backspacePressed()
         case KeyCodes.space: spacePressed(isPressed: true)
@@ -125,8 +148,9 @@ final class DrawingViewModel: Watcher {
         return true
     }
 
-    func canHandle(key code: UInt16) -> Bool {
-        return KeyCodes.allCases.contains(Int(code))
+    func canHandle(key event: NSEvent) -> Bool {
+        guard !event.modifierFlags.contains(.command) else { return false }
+        return editingText != nil || KeyCodes.allCases.contains(Int(event.keyCode))
     }
 
     func prepare() {
@@ -177,6 +201,46 @@ private extension DrawingViewModel {
         enableTranslation = isPressed
     }
 
+    func beginEditing(text: RenderableText) {
+        editingText = text
+        text.isDrawing = false
+        text.isEditing = true
+
+        cursorTimer?.invalidate()
+        cursorTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { [weak self] _ in
+            guard let self = self, !self.isCapturing else { return }
+            text.isCursorVisible.toggle()
+            self.drawings.update()
+        }
+
+        drawings.update()
+    }
+
+    func endEditingText() {
+        guard let text = editingText else { return }
+        stopEditingText()
+
+        // Nothing was typed, so just undo drawing it
+        if text.string.isEmpty {
+            undoManager.undo()
+        }
+
+        drawings.update()
+    }
+
+    func stopEditingText() {
+        editingText?.isEditing = false
+        editingText = nil
+        cursorTimer?.invalidate()
+        cursorTimer = nil
+    }
+
+    func hideCursor(while isCapturing: Bool) {
+        self.isCapturing = isCapturing
+        editingText?.isCursorVisible = !isCapturing
+        drawings.update()
+    }
+
     func createNewPath(startingAt point: CGPoint) {
         let shape: Renderable
 
@@ -197,6 +261,9 @@ private extension DrawingViewModel {
             shape = RenderableCircle(center: point)
             shape.strokeColor = selectedColor
             shape.fillColor = selectedColor
+        case .text:
+            shape = RenderableText(origin: point)
+            shape.strokeColor = selectedColor
         }
 
         append(drawing: shape)
@@ -252,6 +319,10 @@ private extension DrawingViewModel {
     }
 
     func remove(drawing: Renderable) {
+        if drawing === editingText {
+            stopEditingText()
+        }
+
         drawings.value.removeAll(where: { $0 === drawing })
 
         undoManager.registerUndo(withTarget: self) { (self) in

@@ -26,6 +26,7 @@ enum KeyCodes {
     static let charA = kVK_ANSI_A
     static let charR = kVK_ANSI_R
     static let charC = kVK_ANSI_C
+    static let charT = kVK_ANSI_T
 
 //    case line = "l"
 //    case arrow = "a"
@@ -46,6 +47,7 @@ enum KeyCodes {
         KeyCodes.charA,
         KeyCodes.charR,
         KeyCodes.charC,
+        KeyCodes.charT,
     ]
 
 }

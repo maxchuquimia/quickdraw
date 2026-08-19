@@ -36,6 +36,7 @@
 		5578F3A022498D4200DACBB3 /* Numbers+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5578F39F22498D4200DACBB3 /* Numbers+Extension.swift */; };
 		5584963B224DD2F300387F02 /* InteractionDisabledView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5584963A224DD2F300387F02 /* InteractionDisabledView.swift */; };
 		55A840B822489E50009093B8 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A840B722489E50009093B8 /* RadioButton.swift */; };
+		55AA00022C0000010000AA02 /* RenderableText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AA00012C0000010000AA01 /* RenderableText.swift */; };
 		55B94ED42237564000024616 /* Copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B94ED32237564000024616 /* Copy.swift */; };
 		55B94ED62237573200024616 /* Copy.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55B94ED52237573200024616 /* Copy.strings */; };
 		55B94ED822376E0800024616 /* RenderableCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B94ED722376E0800024616 /* RenderableCircle.swift */; };
@@ -99,6 +100,7 @@
 		5578F39F22498D4200DACBB3 /* Numbers+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Numbers+Extension.swift"; sourceTree = "<group>"; };
 		5584963A224DD2F300387F02 /* InteractionDisabledView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionDisabledView.swift; sourceTree = "<group>"; };
 		55A840B722489E50009093B8 /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
+		55AA00012C0000010000AA01 /* RenderableText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderableText.swift; sourceTree = "<group>"; };
 		55B94ED32237564000024616 /* Copy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Copy.swift; sourceTree = "<group>"; };
 		55B94ED52237573200024616 /* Copy.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Copy.strings; sourceTree = "<group>"; };
 		55B94ED722376E0800024616 /* RenderableCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderableCircle.swift; sourceTree = "<group>"; };
@@ -348,6 +350,7 @@
 				55E7860A222DFBEF00A91D79 /* Renderable.swift */,
 				55E78610222E4B9900A91D79 /* RenderableLine.swift */,
 				550189A22235C4D4000E4EC1 /* RenderableRect.swift */,
+				55AA00012C0000010000AA01 /* RenderableText.swift */,
 				55B94ED722376E0800024616 /* RenderableCircle.swift */,
 			);
 			path = Renderables;
@@ -465,6 +468,7 @@
 				554829DD224F201700AA1AB5 /* TextExtensions.swift in Sources */,
 				554829D9224EFFDC00AA1AB5 /* InfoView.swift in Sources */,
 				550189A32235C4D4000E4EC1 /* RenderableRect.swift in Sources */,
+				55AA00022C0000010000AA02 /* RenderableText.swift in Sources */,
 				5501899D2234E062000E4EC1 /* Circle.swift in Sources */,
 				55E78603222DF98600A91D79 /* Watcher.swift in Sources */,
 				55A840B822489E50009093B8 /* RadioButton.swift in Sources */,
@@ -631,14 +635,15 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_TEAM = D3NCG82LUC;
 				INFOPLIST_FILE = "$(SRCROOT)/QuickDraw/Resources/Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.4.2;
+				MARKETING_VERSION = 1.5.0;
 				OTHER_SWIFT_FLAGS = "-DDEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.chuquimianproductions.QuickDraw;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -655,14 +660,15 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_TEAM = D3NCG82LUC;
 				INFOPLIST_FILE = "$(SRCROOT)/QuickDraw/Resources/Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.4.2;
+				MARKETING_VERSION = 1.5.0;
 				OTHER_SWIFT_FLAGS = "-DRELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.chuquimianproductions.QuickDraw;
 				PRODUCT_NAME = "$(TARGET_NAME)";

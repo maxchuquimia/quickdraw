@@ -2,12 +2,14 @@
 
 # Quick Draw
 
-![screenshot](https://raw.githubusercontent.com/maxchuquimia/quickdraw/master/AppStore/Screenshot%201-highres.jpg)
+![screenshot](https://raw.githubusercontent.com/maxchuquimia/quickdraw/master/AppStore/quickdraw-screenshot-1.png)
 
 Do you need a quick, easy and unobtrusive way to highlight content while screencasting?
 Rather than circling your mouse around wildly, try QuickDraw!
 
-When QuickDraw is active, you can draw lines, arrows, rectangle and circles over other windows on your screen. Press the escape key to clear the drawing, and press it again to jump right back to where you were without missing a beat!
+When QuickDraw is active, you can draw lines, arrows, rectangles, circles and text over other windows on your screen. Press the escape key to clear the drawing, and press it again to jump right back to where you were without missing a beat!
+
+More info & screenshots at https://apps.mergeable.io/quick-draw/
 
 ### Usage
 Keyboard Shortcuts
@@ -19,6 +21,7 @@ L           Line mode - hold Shift while drawing for straight lines
 A           Arrow mode - hold Shift while drawing for straight arrows
 R           Rectangle mode - hold Shift while drawing to fill
 C           Circle mode - hold Shift while drawing to fill
+T           Text mode - hold Shift while drawing to include a background
 ⌘C          Copy screenshot to Clipboard (permissions may be requested the first time)
 ⌘S          Save a screenshot to Finder
 ⌘Z          Undo
